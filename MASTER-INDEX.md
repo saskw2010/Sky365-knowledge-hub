@@ -4,6 +4,18 @@
 
 This file is the top-level navigation map for all Sky365 knowledge. It does not replace source indexes. It links them, preserves their provenance, and identifies the canonical destination for each topic.
 
+## Governance and rearrangement control
+
+These three documents control the iterative migration and restructuring cycle:
+
+- [Sky365 Evolving Mental Map](governance/SKY365-MENTAL-MAP.md) — the current hierarchy from purpose to pillars, capabilities, artifacts, sources, and experiences.
+- [Master Repository Census](governance/MASTER-REPOSITORY-CENSUS.md) — the authoritative repository inventory, roles, source areas, and next discovery actions.
+- [Migration Ledger](governance/MIGRATION-LEDGER.md) — the factual record of what was copied, adapted, redirected, validated, promoted, or remains source-only.
+
+Operating loop:
+
+`Discover → Inventory → Snapshot → Classify → Adapt → Link → Validate → Promote → Rearrange → Repeat`
+
 ## Global capability map
 
 ### Vision and platform strategy
@@ -109,10 +121,13 @@ A source document becomes canonical only after:
 
 ## Immediate migration order
 
-1. Import `Sky365Offers/documents/` unchanged.
-2. Import relevant Sky365-owned documentation from `all-agentic-architectures` while preserving upstream attribution.
-3. Import documentation indexes from `sky365ERP` and `sky365API`.
-4. Build duplicate and ownership maps.
-5. Consolidate the master Sky365 Multimodal Agent Platform blueprint.
-6. Consolidate security, voice, video, OCR, prompts, agent runtime, evaluation, and domain-platform documents.
-7. Publish topic pages through the visual portal.
+1. Expand the repository census and pin source commits.
+2. Import `Sky365Offers/documents/` unchanged.
+3. Complete exact snapshots of Sky365-owned visual documentation from `all-agentic-architectures` while preserving upstream attribution.
+4. Import documentation indexes from `sky365ERP` and `sky365API`.
+5. Build duplicate, ownership, and implementation-evidence maps.
+6. Rearrange domains and experience routes based on the accumulated census.
+7. Consolidate the master Sky365 Multimodal Agent Platform blueprint.
+8. Consolidate security, voice, video, OCR, prompts, agent runtime, evaluation, and domain-platform documents.
+9. Publish topic pages through the visual portal.
+10. Create separate Arabic and English editions only after the content structure becomes substantially stable.
