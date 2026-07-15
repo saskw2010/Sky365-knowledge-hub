@@ -14,6 +14,31 @@ No source index is deleted. Every migration starts with an unchanged import and 
 | `saskw2010/sky365ERP` | documentation locations pending discovery | ERP implementation and architecture | Inventory before import |
 | `saskw2010/sky365API` | documentation locations pending discovery | API implementation and architecture | Inventory before import |
 
+## Active migration status — 2026-07-15
+
+| Source area | Canonical destination | Status |
+|---|---|---|
+| Main visual portal | `portal/index.html` | Migrated |
+| Agentic Systems Academy entry | `academy/index.html` | Migrated and navigable |
+| Learning Universe entry | `learning-paths/index.html` | Migrated and navigable |
+| Strategy & Research entry | `strategy/index.html` | Migrated and navigable |
+| Skyverse Stories entry | `stories/index.html` | Migrated and navigable |
+| Agentic Design Studio entry | `agentic-design-studio/index.html` | Migrated and navigable |
+| Portal route compatibility | `portal/*/index.html` | Redirects added to prevent broken links |
+| Knowledge Hub landing hierarchy | `index.html` | Rebuilt as a level-based knowledge map |
+| Blueprints | `documents/07-blueprints/` | Canonical |
+| Research tracks | `documents/08-research/` | Canonical |
+| Decisions | `documents/09-decisions/` | Canonical |
+| Roadmaps | `documents/10-roadmaps/` | Canonical |
+
+### Remaining detailed asset migration
+
+- Academy CSS, JavaScript, series datasets, SVG infographics, Lottie JSON, GIF and motion assets.
+- Full Learning Paths datasets, search/filter logic, and visual assets.
+- Full interactive story pages and media.
+- Strategy application data and visual components.
+- Agentic Design Studio diagrams and supporting assets.
+
 ## Phase 2 — Source manifests
 
 Each imported repository receives:
