@@ -72,6 +72,18 @@ This file is the top-level navigation map for all Sky365 knowledge. It does not 
 - Fleet and rental
 - Research and content studio
 
+## Canonical documents
+
+### Knowledge adaptation architecture
+
+- [BP-AI-006 — Knowledge Adaptation Architecture](documents/07-blueprints/BP-AI-006-knowledge-adaptation-architecture.md)
+- [ADR-AI-006 — Separate Knowledge, Tools, Behavior, and Safety](documents/09-decisions/ADR-AI-006-separate-knowledge-tools-behavior-and-safety.md)
+- [RT-AI-011 — Domain Fine-Tuning Strategy](documents/08-research/RT-AI-011-domain-fine-tuning-strategy.md)
+- [RT-AI-012 — RAG Evaluation Framework](documents/08-research/RT-AI-012-rag-evaluation-framework.md)
+- [RM-AI-006 — Knowledge Adaptation Implementation Roadmap](documents/10-roadmaps/RM-AI-006-knowledge-adaptation-implementation.md)
+
+**Accepted direction:** RAG for dynamic citable knowledge, typed tools for live operational data, skills and selective fine-tuning for behavior, and deterministic policies for safety.
+
 ## Source indexes — preserved
 
 The following indexes will be imported without deletion or destructive rewriting:
