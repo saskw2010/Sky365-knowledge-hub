@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Sky365 central knowledge, architecture, research, blueprints, and documentation hub." />
+  <title>Sky365 Knowledge Hub</title>
+  <style>
+    :root { color-scheme: dark; --bg:#07111f; --panel:#0d1b2d; --line:#233955; --text:#e9f2ff; --muted:#9eb2ca; --blue:#59a8ff; --orange:#ffad52; }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family:Inter,Segoe UI,Arial,sans-serif; background:radial-gradient(circle at top right,#12325a 0,#07111f 40%); color:var(--text); }
+    main { width:min(1180px,92%); margin:auto; padding:64px 0 80px; }
+    .badge { display:inline-block; padding:7px 12px; border:1px solid var(--line); border-radius:999px; color:var(--blue); background:#0b1b2eaa; }
+    h1 { max-width:850px; margin:22px 0 14px; font-size:clamp(2.5rem,7vw,5.5rem); line-height:.95; letter-spacing:-.055em; }
+    .lead { max-width:800px; color:var(--muted); font-size:1.15rem; line-height:1.7; }
+    .actions { display:flex; flex-wrap:wrap; gap:12px; margin:28px 0 50px; }
+    a.button { color:var(--text); text-decoration:none; border:1px solid var(--line); padding:12px 17px; border-radius:12px; background:#10243c; }
+    a.primary { background:linear-gradient(135deg,#2679d8,#1257a5); border-color:#4f9cf1; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:16px; }
+    article { min-height:190px; padding:22px; border-radius:18px; border:1px solid var(--line); background:linear-gradient(145deg,#0f2035dd,#091522e8); box-shadow:0 18px 50px #0005; }
+    article h2 { margin:0 0 10px; font-size:1.15rem; }
+    article p { color:var(--muted); line-height:1.55; }
+    .status { margin-top:55px; padding:20px; border-left:4px solid var(--orange); background:#101c2b; color:var(--muted); }
+    code { color:#ffd39e; }
+    footer { color:#7890aa; margin-top:48px; font-size:.9rem; }
+  </style>
+</head>
+<body>
+  <main>
+    <span class="badge">WytSky · Sky365 · Canonical Knowledge Repository</span>
+    <h1>One source of truth for the Sky365 universe.</h1>
+    <p class="lead">Architecture, agentic AI, safety, OCR, voice, video, prompts, skills, research, decisions, roadmaps, learning, and domain platforms—consolidated without losing source history or legacy indexes.</p>
+    <div class="actions">
+      <a class="button primary" href="MASTER-INDEX.md">Open master index</a>
+      <a class="button" href="REPOSITORY-SOURCES.md">Repository sources</a>
+      <a class="button" href="MIGRATION-MAP.md">Migration map</a>
+    </div>
+
+    <section class="grid" aria-label="Knowledge areas">
+      <article><h2>Agentic Platform</h2><p>Shared runtime, action core, tools, MCP, planning, memory, verification, traces, and recovery.</p></article>
+      <article><h2>Safety & Governance</h2><p>Policy engine, approvals, DraftOnly execution, sandboxing, adversarial tests, tenant isolation, and audit.</p></article>
+      <article><h2>Multimodal Intelligence</h2><p>Document intelligence, OCR, voice editing, video generation, avatars, and media asset pipelines.</p></article>
+      <article><h2>Prompts & Skills</h2><p>Prompt registry, compiler, context engineering, skill packaging, semantic vocabulary, and regression tests.</p></article>
+      <article><h2>Training & Evaluation</h2><p>Environments, traces, verifiers, human feedback, SFT, RL, benchmarks, cost, latency, and reliability.</p></article>
+      <article><h2>Domain Platforms</h2><p>School, ERP, Odoo, healthcare, legal, real estate, fleet, research, and content studio packs.</p></article>
+    </section>
+
+    <div class="status"><strong>Migration principle:</strong> import unchanged, preserve every source index, compare duplicates, then promote only reviewed material into <code>documents/</code>.</div>
+    <footer>Sky365 Knowledge Hub · Maintained by Mostafa Elnagar / WytSky Clouding Solutions</footer>
+  </main>
+</body>
+</html>
