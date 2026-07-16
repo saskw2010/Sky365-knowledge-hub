@@ -24,13 +24,28 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Build visual documentation site
+        run: python scripts/build_site.py
+
+      - name: Verify generated site
+        run: |
+          test -f _site/index.html
+          test -f _site/docs-index.html
+          test -f _site/investment/index.html
+          find _site -name "*.html" -type f | sort
+
       - name: Configure Pages
         uses: actions/configure-pages@v5
 
-      - name: Upload static site
+      - name: Upload generated site
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: _site
 
       - name: Deploy to GitHub Pages
         id: deployment
