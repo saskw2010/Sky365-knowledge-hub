@@ -96,6 +96,13 @@ Operating loop:
 
 **Accepted direction:** RAG for dynamic citable knowledge, typed tools for live operational data, skills and selective fine-tuning for behavior, and deterministic policies for safety.
 
+### Zvec ecosystem and local intelligence research
+
+- [Zvec Ecosystem, Local LLM, and SKY365 Knowledge Engine — Research Source](documents/08-research/zvec-ecosystem/README.md)
+- [Zvec Ecosystem, Local LLM, and SKY365 Knowledge Engine — Visual Mind Map](documents/08-research/zvec-ecosystem/index.html)
+
+**Current sequence:** Tiny LLM learning and Zvec Core inspection first; native .NET integration, Knowledge Engine, Dynamic Business Semantic Layer, and Memory next; MCP tools and Agent Skills later after the foundation is evaluated.
+
 ## Source indexes — preserved
 
 The following indexes will be imported without deletion or destructive rewriting:
