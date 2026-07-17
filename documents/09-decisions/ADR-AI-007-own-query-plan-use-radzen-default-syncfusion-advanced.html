@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Architecture decision record establishing SKY365 ownership of the canonical query plan, with Radzen as the default visual provider and Syncfusion as the advanced provider.">
+<title>ADR-AI-007 — Own the Query Plan; Radzen Default, Syncfusion Advanced</title>
+<style>
+:root{--bg:#07111f;--panel:#0d1b2c;--text:#edf7ff;--muted:#9bb1c5;--line:#24425a;--cyan:#42e6d1;--blue:#6d91ff;--green:#55d98b;--amber:#ffc166;--red:#ff7a88}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 10% 0,#143a50 0,transparent 28%),var(--bg);color:var(--text);font-family:Inter,"Segoe UI",Arial,sans-serif;line-height:1.68}a{color:var(--cyan)}code,pre{font-family:"Cascadia Code",Consolas,monospace}.top{position:sticky;top:0;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px max(18px,calc((100% - 1080px)/2));background:#07111fee;border-bottom:1px solid #ffffff16;backdrop-filter:blur(14px)}.top nav{display:flex;gap:8px}.top nav a{padding:7px 10px;border:1px solid var(--line);border-radius:10px;text-decoration:none;color:var(--text);font-size:12px}.shell{width:min(1080px,calc(100% - 28px));margin:auto}.hero{padding:58px 0 26px}.eyebrow{display:inline-block;padding:6px 10px;border:1px solid #42e6d155;border-radius:999px;background:#42e6d111;color:var(--cyan);font-size:11px;font-weight:900;letter-spacing:.12em}.hero h1{margin:16px 0 10px;font-size:clamp(36px,6vw,62px);line-height:1.04;letter-spacing:-.04em}.hero p{max-width:880px;color:var(--muted);font-size:17px}.meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}.pill{padding:6px 10px;border:1px solid var(--line);border-radius:999px;color:var(--muted);font-size:12px}.accepted{color:var(--green);border-color:#55d98b55;background:#55d98b0e}.section{margin:14px 0;padding:24px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(145deg,var(--panel),#11243a)}.section h2{margin-top:0}.decision{padding:20px;border-left:4px solid var(--green);border-radius:12px;background:#55d98b0d;font-size:16px}.warning{padding:17px;border-left:4px solid var(--amber);border-radius:12px;background:#ffc1660c}.danger{padding:17px;border-left:4px solid var(--red);border-radius:12px;background:#ff7a880c}.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:14px}table{width:100%;border-collapse:collapse;min-width:760px}th,td{padding:13px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{background:#091625;color:var(--cyan);font-size:12px}tr:last-child td{border-bottom:0}.diagram{overflow:auto;padding:18px;border:1px solid var(--line);border-radius:14px;background:#040b13;color:#dcf8ef;white-space:pre}.footer{margin-top:40px;padding:26px 0 44px;border-top:1px solid var(--line);color:var(--muted);font-size:12px}@media(max-width:700px){.top nav{display:none}}
+</style>
+</head>
+<body>
+<header class="top"><strong>SKY365 Knowledge Hub · ADR-AI-007</strong><nav><a href="./">Decisions</a><a href="../07-blueprints/BP-AI-007-sky365-query-studio-provider-architecture.html">Blueprint</a><a href="../../tree/">Knowledge Tree</a></nav></header>
+<main class="shell">
+<section class="hero">
+<span class="eyebrow">ARCHITECTURE DECISION RECORD</span>
+<h1>Own the Query Plan;<br>Radzen Default, Syncfusion Advanced</h1>
+<p>This ADR prevents a Blazor UI component from becoming the semantic source of truth for SKY365 queries, reports, dashboards, and agent actions.</p>
+<div class="meta"><span class="pill accepted">Status: Accepted</span><span class="pill">Date: 2026-07-17</span><span class="pill">Decision owner: SKY365 Platform Architecture</span><span class="pill">Blueprint: BP-AI-007</span></div>
+</section>
+
+<section class="section">
+<h2>Context</h2>
+<p>SKY365 already uses both Radzen and Syncfusion. The platform also needs a visual Query Builder that can represent the same intent created by a user, an AI agent, a report designer, or a dashboard designer. Vendor components provide useful rule-editing capabilities, but they do not own SKY365 business semantics, tenant isolation, permissions, metrics, workflow meaning, destructive-action policy, or audit evidence.</p>
+<p>Radzen provides an open-source Blazor component library, <code>RadzenDataFilter</code>, LINQ/OData-oriented conversion helpers, and a documentation MCP service for coding agents. Syncfusion provides a richer <code>SfQueryBuilder</code>, structured nested rules, import/export formats, locking, validation, and a published multi-stage Blazor UI Builder agent skill.</p>
+</section>
+
+<section class="section">
+<h2>Decision</h2>
+<div class="decision"><strong>SKY365 will define and persist a vendor-neutral <code>SkyQueryPlan</code> as the only canonical query contract.</strong> Radzen will be the default visual query provider for standard SKY365 screens. Syncfusion will be an optional advanced provider for complex rule authoring and advanced design scenarios. Both providers will communicate through SKY365 adapters and will never execute agent-generated SQL directly.</div>
+<pre class="diagram">Natural language / visual editing
+              ↓
+       canonical SkyQueryPlan
+              ↓
+ semantic validation + policy + tenant + permissions
+              ↓
+ controlled compiler: SQL / OData / Odoo / report dataset
+              ↓
+        preview, execute, audit</pre>
+</section>
+
+<section class="section">
+<h2>Decision Details</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Area</th><th>Decision</th></tr></thead>
+<tbody>
+<tr><td>Canonical storage</td><td>Persist <code>SkyQueryPlan</code>, semantic entity IDs, metric IDs, operator IDs, version, and policy metadata.</td></tr>
+<tr><td>Default provider</td><td>Use Radzen for standard filters, grids, saved views, and common ERP query experiences.</td></tr>
+<tr><td>Advanced provider</td><td>Enable Syncfusion for deeply nested rule groups, import/export, rule locking, complex templates, and advanced report/query design.</td></tr>
+<tr><td>Agent workflow</td><td>Adapt the staged orchestration pattern, but keep SKY365 skills, prompts, validators, and design-system rules under SKY365 ownership.</td></tr>
+<tr><td>MCP role</td><td>Use Radzen MCP and vendor skills as development knowledge sources only; they do not grant runtime authority.</td></tr>
+<tr><td>Compilation</td><td>Compile the canonical plan server-side after semantic, authorization, tenant, cost, and policy checks.</td></tr>
+<tr><td>Write operations</td><td>Keep create/update/delete commands outside the query-builder contract and route them through typed action contracts and approval rules.</td></tr>
+</tbody></table></div>
+</section>
+
+<section class="section">
+<h2>Why Radzen Is the Default</h2>
+<ul>
+<li>It is already part of the SKY365 solution.</li>
+<li>The runtime component library is open source under the MIT license.</li>
+<li><code>RadzenDataFilter</code> covers the standard grouped filtering use case.</li>
+<li>It integrates naturally with <code>IQueryable</code>, Entity Framework, server-side loading, and OData.</li>
+<li>It reduces provider cost and lock-in for the default deployment.</li>
+</ul>
+<div class="warning"><strong>Radzen is not being selected as the semantic layer.</strong> It is selected as the default visual adapter.</div>
+</section>
+
+<section class="section">
+<h2>Why Syncfusion Remains Important</h2>
+<ul>
+<li>Its Query Builder exposes a richer structured rule model and advanced manipulation APIs.</li>
+<li>It supports JSON, SQL, parameterized SQL, named-parameter SQL, and MongoDB rule exchange.</li>
+<li>It supports locked rules/groups, custom value templates, validation, and advanced interactions.</li>
+<li>Its Blazor UI Builder demonstrates an eight-stage agent workflow with explicit design and validation gates that can inform SKY365 agent skills.</li>
+</ul>
+<div class="warning"><strong>Syncfusion is not the default source of truth.</strong> Advanced capabilities must be mapped into the canonical SKY365 contract.</div>
+</section>
+
+<section class="section">
+<h2>Rejected Alternatives</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Alternative</th><th>Reason rejected</th></tr></thead>
+<tbody>
+<tr><td>Use Syncfusion <code>RuleModel</code> as the canonical format</td><td>Creates vendor lock-in and mixes UI concerns with semantic and policy concerns.</td></tr>
+<tr><td>Use Radzen filter strings as the canonical format</td><td>Filter strings are execution-oriented, weaker for metrics, relations, unresolved semantics, policy metadata, and multi-target compilation.</td></tr>
+<tr><td>Let the LLM generate SQL directly</td><td>Unsafe, difficult to authorize, database-specific, and unable to guarantee tenant and field-level controls.</td></tr>
+<tr><td>Build a completely custom visual Query Builder immediately</td><td>Duplicates mature UI work and delays the semantic layer, which is the real differentiator.</td></tr>
+<tr><td>Choose one vendor and remove the other</td><td>Conflicts with the current SKY365 solution and loses useful provider-specific strengths.</td></tr>
+</tbody></table></div>
+</section>
+
+<section class="section">
+<h2>Consequences</h2>
+<h3>Positive</h3>
+<ul>
+<li>Natural-language and visual queries share one explainable contract.</li>
+<li>Radzen and Syncfusion can coexist without fragmenting saved queries.</li>
+<li>Report Builder, Dashboard Builder, Grid views, and agents reuse the same semantic plan.</li>
+<li>Provider replacement becomes testable.</li>
+<li>Authorization and destructive-action protection remain deterministic and vendor-independent.</li>
+</ul>
+<h3>Costs and Risks</h3>
+<ul>
+<li>Two provider adapters require contract tests and capability negotiation.</li>
+<li>Some Syncfusion-only features may need graceful degradation in the Radzen adapter.</li>
+<li>The Semantic Catalog and operator vocabulary must be designed before UI shortcuts become permanent.</li>
+<li>Saved-plan versioning and migrations become platform responsibilities.</li>
+</ul>
+<div class="danger"><strong>Unspoken failure mode:</strong> without a canonical plan, the same business request will produce different meanings in the agent, grid, report, and dashboard layers. A polished Query Builder would then hide semantic inconsistency rather than solve it.</div>
+</section>
+
+<section class="section">
+<h2>Implementation Constraints</h2>
+<ul>
+<li>Inspect the existing SKY365 code, runtime registration, metadata stores, and database contracts before implementation.</li>
+<li>Do not assume <code>NoorAutoCrud.razor</code> is the main runtime; current dynamic-screen integration must follow the actual active runtime components.</li>
+<li>Do not expose physical database fields unless mapped and authorized by the Semantic Catalog.</li>
+<li>Do not execute SQL or OData emitted by a UI provider without server-side compilation controls.</li>
+<li>Every query execution must record plan version, semantic mapping, provider, target compiler, policy decision, limits, and audit ID.</li>
+<li>HTML documentation is mandatory for this decision and its implementation blueprint.</li>
+</ul>
+</section>
+
+<section class="section">
+<h2>Review Triggers</h2>
+<p>Review this ADR when any of the following occurs:</p>
+<ul>
+<li>Radzen publishes a full agent UI Builder equivalent rather than a documentation MCP only.</li>
+<li>Syncfusion licensing or deployment constraints materially change.</li>
+<li>SKY365 introduces a custom Query Studio provider.</li>
+<li>The canonical query plan adds write commands, graph traversal, vector retrieval, or federated multi-source execution.</li>
+<li>Provider conformance tests reveal material semantic loss.</li>
+</ul>
+</section>
+
+<section class="section">
+<h2>Primary References</h2>
+<ul>
+<li><a href="https://github.com/syncfusion/blazor-ui-builder">Syncfusion Blazor UI Builder</a></li>
+<li><a href="https://blazor.syncfusion.com/documentation/query-builder/import-export">Syncfusion Query Builder import/export</a></li>
+<li><a href="https://help.syncfusion.com/cr/blazor/Syncfusion.Blazor.QueryBuilder.SfQueryBuilder-1.html">Syncfusion SfQueryBuilder API</a></li>
+<li><a href="https://github.com/radzenhq/radzen-blazor">Radzen Blazor Components</a></li>
+<li><a href="https://blazor.radzen.com/datafilter">Radzen DataFilter</a></li>
+<li><a href="https://www.radzen.com/blazor-mcp/documentation">Radzen Blazor MCP</a></li>
+</ul>
+</section>
+</main>
+<footer class="footer"><div class="shell">Mostafa Elnagar · WytSky Cloud Solutions Oy · SKY365 · ADR-AI-007</div></footer>
+</body>
+</html>
