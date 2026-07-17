@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Approved architecture blueprint for SKY365 Query Studio using a canonical semantic query plan with Radzen and Syncfusion provider adapters.">
+<title>BP-AI-007 — SKY365 Query Studio Provider Architecture</title>
+<style>
+:root{--bg:#07111f;--panel:#0d1b2c;--panel2:#12243a;--text:#edf7ff;--muted:#9bb1c5;--line:#24425a;--cyan:#42e6d1;--blue:#6d91ff;--violet:#b486ff;--green:#55d98b;--amber:#ffc166;--red:#ff7a88}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 15% 0,#123c54 0,transparent 29%),radial-gradient(circle at 85% 0,#2c215b 0,transparent 27%),var(--bg);color:var(--text);font-family:Inter,"Segoe UI",Arial,sans-serif;line-height:1.65}a{color:var(--cyan)}code,pre{font-family:"Cascadia Code",Consolas,monospace}.top{position:sticky;top:0;z-index:10;display:flex;justify-content:space-between;gap:16px;align-items:center;padding:14px max(18px,calc((100% - 1280px)/2));background:#07111fee;border-bottom:1px solid #ffffff16;backdrop-filter:blur(14px)}.top strong{font-size:15px}.top nav{display:flex;gap:8px;flex-wrap:wrap}.top nav a{padding:7px 10px;border:1px solid var(--line);border-radius:10px;text-decoration:none;color:var(--text);font-size:12px}.shell{width:min(1280px,calc(100% - 28px));margin:auto}.hero{padding:64px 0 30px}.eyebrow{display:inline-block;padding:6px 11px;border:1px solid #42e6d155;border-radius:999px;background:#42e6d111;color:var(--cyan);font-size:11px;font-weight:900;letter-spacing:.12em}.hero h1{margin:17px 0 10px;font-size:clamp(38px,6vw,72px);line-height:1.02;letter-spacing:-.045em}.hero h1 span{background:linear-gradient(90deg,var(--cyan),var(--blue),var(--violet));-webkit-background-clip:text;color:transparent}.hero p{max-width:980px;color:var(--muted);font-size:17px}.meta{display:flex;gap:9px;flex-wrap:wrap;margin-top:22px}.pill{padding:7px 10px;border:1px solid var(--line);border-radius:999px;background:#ffffff08;color:var(--muted);font-size:12px}.pill.accepted{border-color:#55d98b55;color:var(--green);background:#55d98b10}.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;margin:20px 0}.card{grid-column:span 6;padding:22px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(145deg,var(--panel),var(--panel2));box-shadow:0 18px 50px #0003}.card.full{grid-column:1/-1}.card.third{grid-column:span 4}.card h2,.card h3{margin-top:0}.card p:last-child{margin-bottom:0}.callout{padding:18px;border-left:4px solid var(--cyan);border-radius:12px;background:#42e6d10d}.warning{border-left-color:var(--amber);background:#ffc1660d}.danger{border-left-color:var(--red);background:#ff7a880c}.ok{border-left-color:var(--green);background:#55d98b0d}.diagram{overflow:auto;padding:18px;border:1px solid var(--line);border-radius:14px;background:#06101c;color:#dffaff;white-space:pre;line-height:1.45}.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:14px}table{width:100%;border-collapse:collapse;min-width:820px}th,td{padding:13px 14px;border-bottom:1px solid var(--line);vertical-align:top;text-align:left}th{background:#0a1726;color:var(--cyan);font-size:12px;letter-spacing:.04em}td{color:#d8e7f2}tr:last-child td{border-bottom:0}.tag{display:inline-block;margin:2px 4px 2px 0;padding:4px 7px;border-radius:999px;background:#6d91ff14;border:1px solid #6d91ff44;color:#b9c7ff;font-size:11px}.steps{counter-reset:step;display:grid;gap:10px}.step{position:relative;padding:16px 16px 16px 58px;border:1px solid var(--line);border-radius:14px;background:#081625}.step:before{counter-increment:step;content:counter(step);position:absolute;left:16px;top:15px;width:28px;height:28px;display:grid;place-items:center;border-radius:9px;background:#42e6d11a;border:1px solid #42e6d144;color:var(--cyan);font-weight:900}.step strong{display:block}.step span{color:var(--muted);font-size:13px}ul{padding-left:22px}.code{overflow:auto;padding:18px;border:1px solid var(--line);border-radius:14px;background:#040b13;color:#d8f7ee;font-size:13px}.source-list li{margin-bottom:9px}.footer{margin-top:50px;padding:26px 0 45px;border-top:1px solid var(--line);color:var(--muted);font-size:12px}@media(max-width:900px){.card,.card.third{grid-column:1/-1}.top nav{display:none}}
+</style>
+</head>
+<body>
+<header class="top"><strong>SKY365 Knowledge Hub · BP-AI-007</strong><nav><a href="./">Blueprints</a><a href="../09-decisions/ADR-AI-007-own-query-plan-use-radzen-default-syncfusion-advanced.html">Related ADR</a><a href="../../tree/">Knowledge Tree</a></nav></header>
+<main class="shell">
+<section class="hero">
+<span class="eyebrow">AI PLATFORM · SEMANTIC LAYER · BLAZOR</span>
+<h1>SKY365 Query Studio<br><span>Provider Architecture</span></h1>
+<p>A vendor-neutral visual query and agent-planning architecture in which SKY365 owns the semantic query contract, policy enforcement, audit trail, and execution compilers while Radzen and Syncfusion remain replaceable Blazor UI providers.</p>
+<div class="meta"><span class="pill accepted">Approved for implementation</span><span class="pill">Date: 2026-07-17</span><span class="pill">Owner: SKY365 Platform Architecture</span><span class="pill">Related: ADR-AI-007</span></div>
+</section>
+
+<section class="grid">
+<article class="card full">
+<h2>1. Executive Decision</h2>
+<div class="callout ok"><strong>SKY365 shall not make Radzen, Syncfusion, SQL, OData, or Odoo domains the canonical query model.</strong> The platform shall define one <code>SkyQueryPlan</code> contract shared by the natural-language planner, visual Query Studio, policy engine, report builder, dashboard builder, and execution adapters.</div>
+<p><strong>Radzen is the default UI provider</strong> because it already exists in the SKY365 solution, its Blazor component library is MIT-licensed, and <code>RadzenDataFilter</code> supports grouped filters plus LINQ/OData-oriented output. <strong>Syncfusion is the advanced provider</strong> for richer nested rule authoring, import/export, parameterized SQL helpers, locking, drag-and-drop scenarios, and its published AI UI Builder workflow.</p>
+</article>
+
+<article class="card">
+<h2>2. What Radzen Already Provides</h2>
+<ul>
+<li><code>RadzenDataFilter&lt;TItem&gt;</code> as a visual field/operator/value filter editor with AND/OR grouping.</li>
+<li>Entity Framework and <code>IQueryable</code> filtering without requiring a custom filter UI.</li>
+<li>Server-side <code>LoadData</code> integration and OData filtering.</li>
+<li>Conversion helpers such as <code>ToFilterString</code> and <code>ToODataFilterString</code>.</li>
+<li>A serializable <code>Radzen.Query</code> model for filter, parameters, ordering, paging, selection, and expansion.</li>
+<li>Radzen Blazor MCP, which gives coding agents live access to Radzen component documentation, APIs, templates, and usage guidance.</li>
+</ul>
+<div class="callout warning"><strong>Boundary:</strong> Radzen MCP is development-time component knowledge. It is not the SKY365 runtime semantic layer, business vocabulary, authorization model, or query planner.</div>
+</article>
+
+<article class="card">
+<h2>3. What Syncfusion Adds</h2>
+<ul>
+<li><code>SfQueryBuilder</code> with structured <code>RuleModel</code> objects and nested rule groups.</li>
+<li>JSON, SQL, parameterized SQL, named-parameter SQL, and MongoDB import/export capabilities.</li>
+<li>Programmatic rule locking, group locking, validation, custom value templates, and drag/drop events.</li>
+<li>A published Blazor UI Builder agent skill using an eight-stage orchestration flow with two decision gates.</li>
+<li>Progressive disclosure of stage guidance to reduce unnecessary agent context.</li>
+</ul>
+<div class="callout warning"><strong>Boundary:</strong> Syncfusion-generated SQL must never be executed directly as an agent output. SKY365 must validate a canonical plan and compile it server-side under tenant, permission, cost, and policy controls.</div>
+</article>
+
+<article class="card full">
+<h2>4. Canonical Architecture</h2>
+<pre class="diagram">User request or visual editing
+            │
+            ▼
+Intent + risk analysis
+            │
+            ▼
+Semantic Entity / Field / Relation / Metric Catalog
+            │
+            ▼
+        SkyQueryPlan  ◄────────────── Visual Query Provider
+            │                         ├─ Radzen adapter (default)
+            │                         └─ Syncfusion adapter (advanced)
+            ▼
+Validation + normalization
+            │
+            ▼
+Policy / permission / tenant / cost / approval checks
+            │
+            ▼
+Execution compiler
+  ├─ SQL read model
+  ├─ OData / REST filter
+  ├─ Odoo domain
+  ├─ GraphQL filter
+  └─ Report / dashboard dataset
+            │
+            ▼
+Explainable preview → controlled execution → audit evidence</pre>
+</article>
+
+<article class="card full">
+<h2>5. Canonical <code>SkyQueryPlan</code></h2>
+<pre class="code">{
+  "version": "1.0",
+  "intent": "Read",
+  "entity": "Supplier",
+  "select": ["SupplierId", "Name"],
+  "metrics": [
+    { "name": "TotalPurchases", "aggregation": "sum", "field": "PurchaseAmount" }
+  ],
+  "filter": {
+    "logic": "and",
+    "rules": [
+      { "field": "DeliveryStatus", "operator": "eq", "value": "Late" },
+      { "metric": "TotalPurchases", "operator": "gt", "value": 10000 }
+    ]
+  },
+  "timeRange": { "field": "PurchaseDate", "relativeDays": 90 },
+  "sort": [{ "field": "TotalPurchases", "direction": "desc" }],
+  "page": { "number": 1, "size": 50 },
+  "policyContext": {
+    "tenantRequired": true,
+    "approvalRequired": false,
+    "maxRows": 5000
+  }
+}</pre>
+<p>The canonical contract uses business identifiers from the Semantic Catalog. Vendor-specific field names, SQL column names, OData syntax, and Odoo model fields are resolved only inside controlled adapters.</p>
+</article>
+
+<article class="card full">
+<h2>6. Provider Responsibilities</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Capability</th><th>SKY365 Core</th><th>Radzen Provider</th><th>Syncfusion Provider</th></tr></thead>
+<tbody>
+<tr><td>Business vocabulary</td><td>Canonical owner</td><td>Consumes catalog</td><td>Consumes catalog</td></tr>
+<tr><td>Natural-language planning</td><td>Canonical owner</td><td>Not responsible</td><td>UI Builder pattern may inform skills</td></tr>
+<tr><td>Visual field/operator/value editing</td><td>Defines contract</td><td>Default implementation</td><td>Advanced implementation</td></tr>
+<tr><td>Nested rule groups</td><td>Canonical model</td><td>Adapter validates supported depth</td><td>Rich native support</td></tr>
+<tr><td>SQL/OData/Odoo compilation</td><td>Server-side compilers</td><td>Preview helpers only</td><td>Preview/import helpers only</td></tr>
+<tr><td>Tenant and permissions</td><td>Mandatory enforcement</td><td>No authority</td><td>No authority</td></tr>
+<tr><td>Destructive-action protection</td><td>Mandatory policy/approval</td><td>No authority</td><td>No authority</td></tr>
+<tr><td>Audit and explainability</td><td>Canonical owner</td><td>Displays evidence</td><td>Displays evidence</td></tr>
+</tbody></table></div>
+</article>
+
+<article class="card third"><h3>Radzen Default</h3><p>Use for standard ERP filtering, saved views, DataGrid filters, read-model queries, and low-friction integration with the existing SKY365 Blazor solution.</p><span class="tag">MIT runtime</span><span class="tag">Existing stack</span><span class="tag">OData/LINQ</span></article>
+<article class="card third"><h3>Syncfusion Advanced</h3><p>Use for deeply nested conditions, rule import/export, locked policy clauses, custom editors, advanced report design, and enterprise-grade query authoring.</p><span class="tag">Nested rules</span><span class="tag">SQL/Mongo import</span><span class="tag">Agent workflow</span></article>
+<article class="card third"><h3>SKY365 Ownership</h3><p>Own the canonical schema, semantic metadata, provider adapters, compilers, policies, approvals, audit events, tests, and replacement capability.</p><span class="tag">No lock-in</span><span class="tag">Policy first</span><span class="tag">Agent safe</span></article>
+
+<article class="card full">
+<h2>7. Required Interfaces</h2>
+<pre class="code">public interface ISkyQueryBuilderAdapter
+{
+    string ProviderName { get; }
+    SkyQueryPlan ReadPlan();
+    Task RenderPlanAsync(SkyQueryPlan plan, CancellationToken ct);
+    IReadOnlyList&lt;SkyQueryValidationError&gt; ValidateUiState();
+}
+
+public interface ISkyQueryCompiler
+{
+    string Target { get; }
+    Task&lt;CompiledQuery&gt; CompileAsync(
+        SkyQueryPlan plan,
+        QueryExecutionContext context,
+        CancellationToken ct);
+}
+
+public interface ISkyQueryPolicyEvaluator
+{
+    Task&lt;QueryPolicyDecision&gt; EvaluateAsync(
+        SkyQueryPlan plan,
+        QueryExecutionContext context,
+        CancellationToken ct);
+}</pre>
+</article>
+
+<article class="card full">
+<h2>8. Agent Orchestration</h2>
+<div class="steps">
+<div class="step"><strong>Intent and operation classification</strong><span>Distinguish query, report, dashboard, navigation, draft change, and destructive action before selecting tools.</span></div>
+<div class="step"><strong>Project and provider detection</strong><span>Inspect the current SKY365 module, registered component providers, metadata source, and execution target.</span></div>
+<div class="step"><strong>Semantic mapping</strong><span>Map natural language to canonical entities, fields, relations, metrics, time semantics, and business statuses.</span></div>
+<div class="step"><strong>Query-plan generation</strong><span>Create <code>SkyQueryPlan</code>; do not generate executable SQL as the source of truth.</span></div>
+<div class="step"><strong>Visual projection</strong><span>Render the plan through Radzen or Syncfusion without losing canonical IDs.</span></div>
+<div class="step"><strong>Validation and explanation gate</strong><span>Show interpreted meaning, unresolved terms, risk, estimated scope, and locked policy clauses.</span></div>
+<div class="step"><strong>Policy-controlled compilation</strong><span>Compile only after permission, tenant, row-limit, field-sensitivity, and cost checks pass.</span></div>
+<div class="step"><strong>Execution and evidence</strong><span>Return result, generated artifact, trace, compiler target, policy decision, and audit ID.</span></div>
+</div>
+</article>
+
+<article class="card">
+<h2>9. Safety Rules</h2>
+<ul>
+<li>Read and write plans must use different contracts and tools.</li>
+<li>Delete, irreversible update, bulk change, and cross-tenant access are never query-builder operations.</li>
+<li>Mandatory tenant predicates and security filters must be locked and invisible to normal editing where appropriate.</li>
+<li>Every execution receives row, timeout, join-depth, and cost limits.</li>
+<li>Unknown semantic terms remain unresolved; they are not guessed into physical columns.</li>
+<li>Preview and explain are required before high-impact execution.</li>
+</ul>
+</article>
+
+<article class="card">
+<h2>10. Anti-Goals</h2>
+<ul>
+<li>Do not clone the complete Syncfusion or Radzen designer.</li>
+<li>Do not expose arbitrary database tables to the agent.</li>
+<li>Do not store vendor rule models as the only saved format.</li>
+<li>Do not treat MCP documentation as authorization or runtime policy.</li>
+<li>Do not promise semantic understanding from UI filtering components alone.</li>
+<li>Do not couple Report Builder, Dashboard Builder, or Odoo agents directly to a vendor component.</li>
+</ul>
+</article>
+
+<article class="card full">
+<h2>11. Implementation Plan</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Phase</th><th>Deliverables</th><th>Exit condition</th></tr></thead>
+<tbody>
+<tr><td>Phase 1 — Canonical contract</td><td><code>SkyQueryPlan</code>, operators, groups, metrics, time range, pagination, semantic IDs, JSON schema, validation.</td><td>Round-trip serialization and test fixtures pass.</td></tr>
+<tr><td>Phase 2 — Radzen adapter</td><td>Metadata-driven <code>RadzenDataFilter</code>, plan conversion, DataGrid integration, saved views, OData/read-model compiler.</td><td>Natural language and visual UI produce the same canonical plan.</td></tr>
+<tr><td>Phase 3 — Policy and audit</td><td>Tenant injection, field permissions, locked clauses, limits, explain panel, audit event model.</td><td>Unsafe and unauthorized plans are deterministically denied.</td></tr>
+<tr><td>Phase 4 — Syncfusion adapter</td><td>Advanced nested groups, custom templates, import/export bridge, locked groups, provider feature tests.</td><td>Provider can be switched without changing stored plans.</td></tr>
+<tr><td>Phase 5 — Shared consumers</td><td>Report Builder, Dashboard Builder, Agent Query Planner, saved searches, scheduled reports.</td><td>All consumers use <code>SkyQueryPlan</code> rather than vendor models.</td></tr>
+</tbody></table></div>
+</article>
+
+<article class="card full">
+<h2>12. Acceptance Criteria</h2>
+<ul>
+<li>A query created in natural language can be opened, edited, and explained visually.</li>
+<li>A visually created query can be converted back into the same semantic plan without vendor identifiers leaking into the canonical contract.</li>
+<li>Radzen and Syncfusion adapters pass the same provider contract tests for shared capabilities.</li>
+<li>Mandatory tenant and permission rules cannot be removed by the user or agent.</li>
+<li>No generated SQL, OData, or Odoo domain executes before server-side validation and policy evaluation.</li>
+<li>The platform records provider, plan version, semantic mappings, compiled target, limits, policy decision, and audit identifier.</li>
+<li>The default deployment can run with Radzen only; advanced deployments may enable Syncfusion without changing stored query definitions.</li>
+</ul>
+</article>
+
+<article class="card full">
+<h2>13. Evidence and Primary Sources</h2>
+<ul class="source-list">
+<li><a href="https://github.com/syncfusion/blazor-ui-builder">Syncfusion Blazor UI Builder</a> — AI-powered Blazor UI agent skill and eight-stage orchestration workflow.</li>
+<li><a href="https://github.com/syncfusion/blazor-ui-components-skills">Syncfusion Blazor UI Components Skills</a> — component-focused agent skills.</li>
+<li><a href="https://blazor.syncfusion.com/documentation/query-builder/import-export">Syncfusion Blazor Query Builder import/export</a> — JSON, SQL, parameterized SQL, named-parameter SQL, and MongoDB rule exchange.</li>
+<li><a href="https://help.syncfusion.com/cr/blazor/Syncfusion.Blazor.QueryBuilder.SfQueryBuilder-1.html">Syncfusion SfQueryBuilder API</a> — structured rules, SQL helpers, locking, and rule operations.</li>
+<li><a href="https://github.com/radzenhq/radzen-blazor">Radzen Blazor Components</a> — open-source MIT Blazor component library.</li>
+<li><a href="https://blazor.radzen.com/datafilter">Radzen DataFilter</a> — visual grouped filtering over data sources.</li>
+<li><a href="https://blazor.radzen.com/docs/api/Radzen.QueryableExtension.html">Radzen QueryableExtension</a> — filter and OData conversion helpers.</li>
+<li><a href="https://www.radzen.com/blazor-mcp/documentation">Radzen Blazor MCP documentation</a> — live component documentation for coding agents.</li>
+</ul>
+</article>
+</section>
+</main>
+<footer class="footer"><div class="shell">Mostafa Elnagar · WytSky Cloud Solutions Oy · SKY365 · BP-AI-007</div></footer>
+</body>
+</html>
