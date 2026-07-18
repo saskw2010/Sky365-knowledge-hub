@@ -3,6 +3,7 @@
 **Status:** Active research hub  
 **Visibility:** Public research and architecture only  
 **Canonical repository:** `saskw2010/Sky365-knowledge-hub`  
+**Simple HTML edition:** [`simple.html`](./simple.html)  
 **Visual edition:** [`index.html`](./index.html)
 
 ## Purpose
@@ -30,7 +31,7 @@ This hub does **not** copy every upstream repository into documentation. Importa
 - comparison and gap matrices;
 - source manifests and provenance;
 - implementation roadmaps;
-- HTML visual documentation.
+- simple and visual HTML documentation.
 
 ### Forks
 
@@ -218,8 +219,9 @@ Every strategically reviewed fork should produce:
 6. Reuse decision: use, wrap, port, rewrite, or reject.
 7. C# opportunity assessment.
 8. Experiment results.
-9. HTML visual report.
-10. Upstream synchronization policy.
+9. Lightweight print-friendly HTML report.
+10. Optional richer visual HTML report when it adds value.
+11. Upstream synchronization policy.
 
 ## Immediate work package
 
@@ -237,13 +239,15 @@ Every strategically reviewed fork should produce:
 - Do not copy secrets or tenant-specific schemas into this public hub.
 - Do not translate upstream Python line by line into C#; recover contracts and intent, then implement idiomatic .NET components.
 - Do not fork a repository merely because it is interesting.
-- Every Markdown document created in this area must have an HTML visual counterpart.
+- Every canonical Markdown document created in this area must have a lightweight, print-friendly HTML edition.
+- A richer visual HTML edition is optional and should be added only when it contributes additional value.
 
 ## Session records
 
 ### 2026-07-18 — Zvec Local Intelligence Architecture
 
 - [Complete session closure — Markdown](./sessions/2026-07-18-session-close.md)
-- [Complete session closure — HTML visual edition](./sessions/2026-07-18-session-close.html)
+- [Complete session closure — Simple HTML edition](./sessions/2026-07-18-session-close-simple.html)
+- [Complete session closure — Visual HTML edition](./sessions/2026-07-18-session-close.html)
 
 This session established the Tiny LLM learning boundary, verified Zvec as the storage and retrieval core rather than an agent, separated business semantics and memory lifecycle from storage, adopted the C++ plus idiomatic .NET direction, deferred MCP and Agent Skills, and formalized the public hub and strategic fork model.
