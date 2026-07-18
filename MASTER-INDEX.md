@@ -110,11 +110,14 @@ Operating loop:
 
 - [Zvec Ecosystem, Local LLM, and SKY365 Knowledge Engine — Research Source](documents/08-research/zvec-ecosystem/README.md)
 - [Zvec Ecosystem, Local LLM, and SKY365 Knowledge Engine — Visual Mind Map](documents/08-research/zvec-ecosystem/index.html)
+- [Zvec Local Intelligence Architecture — Complete Session Closure](documents/08-research/zvec-ecosystem/sessions/2026-07-18-session-close.md)
+- [Zvec Local Intelligence Architecture — Visual Session Closure](documents/08-research/zvec-ecosystem/sessions/2026-07-18-session-close.html)
 
 **Current sequence:** Tiny LLM learning and Zvec Core inspection first; native .NET integration, Knowledge Engine, Dynamic Business Semantic Layer, and Memory next; MCP tools and Agent Skills later after the foundation is evaluated.
 
 ### Session knowledge extracts
 
+- [SESSION-TEMP — Zvec Local Intelligence Architecture](documents/08-research/zvec-ecosystem/sessions/2026-07-18-session-close.md) — full session identity, executive summary, ADRs, knowledge extraction, concept graph, project status, backlog, TODOs, repository changes, commit message, and publish checklist.
 - [SESSION-TEMP — Developer Productivity Habits and Kimi K3 Deployment Reality](documents/archive/sessions/2026/07/SESSION-TEMP-developer-productivity-kimi-k3-analysis.md) — evidence-limited article review, developer delivery workflow, Kimi K3 deployment analysis, provider-routing ADRs, concept graph, and project backlog.
 
 ## Source indexes — preserved
