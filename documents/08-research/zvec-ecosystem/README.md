@@ -72,7 +72,7 @@ The public hub must not contain:
 - internal authorization maps;
 - unreleased commercial rules or sensitive competitive details.
 
-Private implementation evidence remains in the relevant SKY365 code repositories and is linked from here without copying secrets.
+Private implementation evidence remains in the relevant SKY365 code repositories and is linked here without copying secrets.
 
 ## Strategic mind map
 
@@ -238,3 +238,12 @@ Every strategically reviewed fork should produce:
 - Do not translate upstream Python line by line into C#; recover contracts and intent, then implement idiomatic .NET components.
 - Do not fork a repository merely because it is interesting.
 - Every Markdown document created in this area must have an HTML visual counterpart.
+
+## Session records
+
+### 2026-07-18 — Zvec Local Intelligence Architecture
+
+- [Complete session closure — Markdown](./sessions/2026-07-18-session-close.md)
+- [Complete session closure — HTML visual edition](./sessions/2026-07-18-session-close.html)
+
+This session established the Tiny LLM learning boundary, verified Zvec as the storage and retrieval core rather than an agent, separated business semantics and memory lifecycle from storage, adopted the C++ plus idiomatic .NET direction, deferred MCP and Agent Skills, and formalized the public hub and strategic fork model.
