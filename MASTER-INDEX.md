@@ -108,10 +108,14 @@ Operating loop:
 
 ### Zvec ecosystem and local intelligence research
 
-- [Zvec Ecosystem, Local LLM, and SKY365 Knowledge Engine — Research Source](documents/08-research/zvec-ecosystem/README.md)
-- [Zvec Ecosystem, Local LLM, and SKY365 Knowledge Engine — Visual Mind Map](documents/08-research/zvec-ecosystem/index.html)
-- [Zvec Local Intelligence Architecture — Complete Session Closure](documents/08-research/zvec-ecosystem/sessions/2026-07-18-session-close.md)
-- [Zvec Local Intelligence Architecture — Visual Session Closure](documents/08-research/zvec-ecosystem/sessions/2026-07-18-session-close.html)
+- [Zvec Ecosystem — Research Source](documents/08-research/zvec-ecosystem/README.md)
+- [Zvec Ecosystem — Simple HTML Edition](documents/08-research/zvec-ecosystem/simple.html)
+- [Zvec Ecosystem — Visual Mind Map](documents/08-research/zvec-ecosystem/index.html)
+- [Zvec Session Closure — Markdown](documents/08-research/zvec-ecosystem/sessions/2026-07-18-session-close.md)
+- [Zvec Session Closure — Simple HTML Edition](documents/08-research/zvec-ecosystem/sessions/2026-07-18-session-close-simple.html)
+- [Zvec Session Closure — Visual HTML Edition](documents/08-research/zvec-ecosystem/sessions/2026-07-18-session-close.html)
+
+**HTML publication rule for this track:** each canonical Markdown document must have a lightweight, print-friendly HTML edition. A richer visual edition may also be added when it provides additional value.
 
 **Current sequence:** Tiny LLM learning and Zvec Core inspection first; native .NET integration, Knowledge Engine, Dynamic Business Semantic Layer, and Memory next; MCP tools and Agent Skills later after the foundation is evaluated.
 
