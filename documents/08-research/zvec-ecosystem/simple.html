@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Zvec Ecosystem Research Hub — Simple HTML</title>
+  <style>
+    :root { color-scheme: light dark; }
+    body { max-width: 980px; margin: 0 auto; padding: 32px 20px 64px; font: 17px/1.65 system-ui, -apple-system, "Segoe UI", sans-serif; }
+    header { border-bottom: 1px solid #8886; margin-bottom: 28px; padding-bottom: 16px; }
+    nav a { margin-right: 14px; }
+    h1, h2, h3, h4 { line-height: 1.25; margin-top: 1.5em; }
+    h1 { margin-top: 0; }
+    table { width: 100%; border-collapse: collapse; display: block; overflow-x: auto; }
+    th, td { border: 1px solid #8887; padding: 8px 10px; text-align: left; vertical-align: top; }
+    pre { overflow-x: auto; padding: 14px; border: 1px solid #8887; border-radius: 6px; background: #8881; }
+    code { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; }
+    :not(pre) > code { padding: 1px 5px; border-radius: 4px; background: #8882; }
+    blockquote { margin-left: 0; padding-left: 16px; border-left: 4px solid #8888; }
+    .status { color: #666; }
+    .error { color: #b00020; white-space: pre-wrap; }
+    @media print {
+      nav { display: none; }
+      body { max-width: none; padding: 0; color: #000; background: #fff; font-size: 11pt; }
+      a { color: #000; text-decoration: none; }
+      pre, table { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Zvec Ecosystem, Local LLM, and SKY365 Knowledge Engine</h1>
+    <p class="status">Simple, print-friendly edition. Canonical source: <a href="README.md">README.md</a>.</p>
+    <nav>
+      <a href="index.html">Visual edition</a>
+      <a href="sessions/2026-07-18-session-close-simple.html">Simple session closure</a>
+      <a href="sessions/2026-07-18-session-close.html">Visual session closure</a>
+    </nav>
+  </header>
+  <main id="content" aria-live="polite">Loading…</main>
+  <script>
+    const sourceFile = 'README.md';
+    const root = document.getElementById('content');
+
+    const escapeHtml = value => value
+      .replaceAll('&', '&amp;')
+      .replaceAll('<', '&lt;')
+      .replaceAll('>', '&gt;');
+
+    function inline(text) {
+      let out = escapeHtml(text);
+      out = out.replace(/`([^`]+)`/g, '<code>$1</code>');
+      out = out.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>');
+      out = out.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+      out = out.replace(/\*([^*]+)\*/g, '<em>$1</em>');
+      return out;
+    }
+
+    function renderMarkdown(markdown) {
+      const lines = markdown.replace(/\r/g, '').split('\n');
+      const html = [];
+      let paragraph = [];
+      let listType = null;
+      let inCode = false;
+      let code = [];
+      let table = null;
+
+      const flushParagraph = () => {
+        if (paragraph.length) {
+          html.push('<p>' + inline(paragraph.join(' ')) + '</p>');
+          paragraph = [];
+        }
+      };
+      const closeList = () => {
+        if (listType) html.push(`</${listType}>`);
+        listType = null;
+      };
+      const flushTable = () => {
+        if (!table) return;
+        html.push('<table><thead><tr>' + table.head.map(c => '<th>' + inline(c.trim()) + '</th>').join('') + '</tr></thead><tbody>');
+        for (const row of table.rows) html.push('<tr>' + row.map(c => '<td>' + inline(c.trim()) + '</td>').join('') + '</tr>');
+        html.push('</tbody></table>');
+        table = null;
+      };
+      const cells = line => line.trim().replace(/^\||\|$/g, '').split('|');
+      const isSeparator = line => /^\s*\|?\s*:?-{3,}/.test(line) && line.includes('|');
+
+      for (let i = 0; i < lines.length; i++) {
+        const line = lines[i];
+        if (line.trim().startsWith('```')) {
+          flushParagraph(); closeList(); flushTable();
+          if (inCode) {
+            html.push('<pre><code>' + escapeHtml(code.join('\n')) + '</code></pre>');
+            code = [];
+          }
+          inCode = !inCode;
+          continue;
+        }
+        if (inCode) { code.push(line); continue; }
+
+        if (line.includes('|') && i + 1 < lines.length && isSeparator(lines[i + 1])) {
+          flushParagraph(); closeList(); flushTable();
+          table = { head: cells(line), rows: [] };
+          i++;
+          continue;
+        }
+        if (table && line.includes('|') && line.trim()) { table.rows.push(cells(line)); continue; }
+        if (table) flushTable();
+
+        const heading = line.match(/^(#{1,6})\s+(.+)$/);
+        if (heading) {
+          flushParagraph(); closeList();
+          const level = heading[1].length;
+          html.push(`<h${level}>${inline(heading[2])}</h${level}>`);
+          continue;
+        }
+        if (/^---+$/.test(line.trim())) { flushParagraph(); closeList(); html.push('<hr>'); continue; }
+        if (/^>\s?/.test(line)) { flushParagraph(); closeList(); html.push('<blockquote>' + inline(line.replace(/^>\s?/, '')) + '</blockquote>'); continue; }
+
+        const unordered = line.match(/^\s*[-*+]\s+(.+)$/);
+        const ordered = line.match(/^\s*\d+\.\s+(.+)$/);
+        if (unordered || ordered) {
+          flushParagraph();
+          const wanted = unordered ? 'ul' : 'ol';
+          if (listType !== wanted) { closeList(); html.push(`<${wanted}>`); listType = wanted; }
+          html.push('<li>' + inline((unordered || ordered)[1]) + '</li>');
+          continue;
+        }
+
+        if (!line.trim()) { flushParagraph(); closeList(); continue; }
+        paragraph.push(line.trim());
+      }
+
+      flushParagraph(); closeList(); flushTable();
+      if (inCode) html.push('<pre><code>' + escapeHtml(code.join('\n')) + '</code></pre>');
+      return html.join('\n');
+    }
+
+    fetch(sourceFile)
+      .then(response => {
+        if (!response.ok) throw new Error(`Unable to load ${sourceFile}: ${response.status}`);
+        return response.text();
+      })
+      .then(markdown => { root.innerHTML = renderMarkdown(markdown); })
+      .catch(error => {
+        root.innerHTML = '<p class="error">' + escapeHtml(error.message) + '</p><p><a href="README.md">Open the Markdown source directly</a>.</p>';
+      });
+  </script>
+</body>
+</html>
