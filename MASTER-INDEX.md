@@ -96,6 +96,16 @@ Operating loop:
 
 **Accepted direction:** RAG for dynamic citable knowledge, typed tools for live operational data, skills and selective fine-tuning for behavior, and deterministic policies for safety.
 
+### Knowledge Dataset Compiler
+
+- [BP-AI-007 — SKY365 Knowledge Dataset Compiler](documents/07-blueprints/BP-AI-007-knowledge-dataset-compiler.md)
+- [ADR-AI-007 — Adopt a Knowledge Dataset Compiler Before RAG Ingestion](documents/09-decisions/ADR-AI-007-adopt-knowledge-dataset-compiler.md)
+- [Knowledge Dataset Schema](documents/04-prompt-skill-engineering/knowledge-dataset-schema.md)
+- [Knowledge Dataset Compiler Prompt Pack](documents/04-prompt-skill-engineering/knowledge-dataset-compiler-prompts.md)
+- [Session Record — 2026-07-18](docs/history/chat-archive/2026-07-18-knowledge-dataset-compiler-session.md)
+
+**Accepted pilot direction:** author structured semantic knowledge units in a reviewable dataset before embedding. Use Google Sheets for staging, Markdown and JSON as governed exports, and vector databases only as derived retrieval indexes. Begin with `ERP → Finance → General Ledger → Journal Voucher`.
+
 ### Zvec ecosystem and local intelligence research
 
 - [Zvec Ecosystem, Local LLM, and SKY365 Knowledge Engine — Research Source](documents/08-research/zvec-ecosystem/README.md)
