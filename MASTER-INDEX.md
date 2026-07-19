@@ -127,6 +127,12 @@ Operating loop:
 
 **Current sequence:** Tiny LLM learning and Zvec Core inspection first; native .NET integration, Knowledge Engine, Dynamic Business Semantic Layer, and Memory next; MCP tools and Agent Skills later after the foundation is evaluated.
 
+### Unified Daily Sector Intelligence
+
+- [SKY365 Unified Daily Sector Intelligence System](documents/08-research/daily-intelligence/DAILY-SECTOR-INTELLIGENCE-SYSTEM.md) — canonical specification for the single 08:00 daily intelligence task, including seven sectors, item lists, evidence hierarchy, persistent ledgers, decision matrix, individual/business/planning impact, repository governance, funding review, and consolidated email/report behavior.
+
+**Accepted direction:** replace overlapping AI, immigration, BC PNP, funding, and repository-review automations with one governed daily orchestration. Preserve sector-specific checks internally, report every confirmed Canadian immigration draw, deduplicate cross-sector evidence, and convert findings into decisions and actions rather than a general news digest.
+
 ### AI Opportunity Radar — Issue 55
 
 - [Issue 55 — RAG, Always-On Memory, and the SKY365 Knowledge Engine](ai-opportunity-radar/issues/55/index.html) — working HTML review covering all newsletter topics, the RAG pipeline, continuous memory, five visual models, the seven-phase execution roadmap, decisions, and repository-derived Concept Graph gate.
