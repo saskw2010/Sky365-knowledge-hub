@@ -16,6 +16,14 @@ Operating loop:
 
 `Discover → Inventory → Snapshot → Classify → Adapt → Link → Validate → Promote → Rearrange → Repeat`
 
+## Publication and retrieval defaults
+
+- Every canonical topic, session, research issue, or visual experience must be linked from this `MASTER-INDEX.md`.
+- HTML is a first-class approved documentation format for human review, not merely a disposable rendering. Markdown and structured JSON remain preferred machine-editable sources when available; the approved HTML experience must preserve the same claims, provenance, status, and links.
+- New links are added only after the target page exists and is validated, so the master index does not publish broken destinations.
+- Zvec is the default local vector engine for the current SKY365 retrieval prototype and evaluation track.
+- Replacing Zvec requires evidence from a reproducible SKY365 benchmark covering retrieval quality, Arabic/English behavior, ingestion and query latency, memory and storage use, operational complexity, licensing, and ecosystem maturity. Public leaderboard speed alone is insufficient.
+
 ## Global capability map
 
 ### Vision and platform strategy
