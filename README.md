@@ -15,6 +15,17 @@ This repository consolidates architecture, agentic AI blueprints, research, prod
 7. **Check first, then implement only what is missing or broken.**
 8. **Markdown is the source of truth; HTML is the visual experience.**
 
+## Where the central documentation lives
+
+- **Canonical documentation:** [`documents/`](documents/)
+- **Central navigation and topic registry:** [`MASTER-INDEX.md`](MASTER-INDEX.md)
+- **Public landing page:** [`index.html`](index.html)
+- **Auto-generated HTML library:** `docs-index.html` on the published site
+- **Current repository structure:** [`governance/CURRENT-TREE.md`](governance/CURRENT-TREE.md)
+- **Target structure and migration direction:** [`governance/TARGET-TREE.md`](governance/TARGET-TREE.md)
+
+New product architecture must be authored under `documents/`, linked from `MASTER-INDEX.md`, and then surfaced through `index.html`. The landing page presents canonical knowledge; it does not replace it.
+
 ## Initial structure
 
 ```text
