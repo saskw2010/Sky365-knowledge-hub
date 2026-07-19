@@ -127,6 +127,12 @@ Operating loop:
 
 **Current sequence:** Tiny LLM learning and Zvec Core inspection first; native .NET integration, Knowledge Engine, Dynamic Business Semantic Layer, and Memory next; MCP tools and Agent Skills later after the foundation is evaluated.
 
+### AI Opportunity Radar — Issue 55
+
+- [Issue 55 — RAG, Always-On Memory, and the SKY365 Knowledge Engine](ai-opportunity-radar/issues/55/index.html) — working HTML review covering all newsletter topics, the RAG pipeline, continuous memory, five visual models, the seven-phase execution roadmap, decisions, and repository-derived Concept Graph gate.
+
+**Accepted direction:** use HTML as the primary human review experience, Zvec as the local retrieval pilot, and generate the final Concept Graph from governed repository evidence after completing the seven phases.
+
 ### Session knowledge extracts
 
 - [SESSION-TEMP — Zvec Local Intelligence Architecture](documents/08-research/zvec-ecosystem/sessions/2026-07-18-session-close.md) — full session identity, executive summary, ADRs, knowledge extraction, concept graph, project status, backlog, TODOs, repository changes, commit message, and publish checklist.
