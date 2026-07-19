@@ -133,6 +133,12 @@ Operating loop:
 
 **Accepted direction:** replace overlapping AI, immigration, BC PNP, funding, and repository-review automations with one governed daily orchestration. Preserve sector-specific checks internally, report every confirmed Canadian immigration draw, deduplicate cross-sector evidence, and convert findings into decisions and actions rather than a general news digest.
 
+### Sky365Offers scenario catalog
+
+- [Sky365Offers — Scenario Catalog v1](documents/06-domain-platforms/sky365offers-scenario-catalog.html) — evidence-backed HTML catalog connecting business events, data, decisions, actions, human approvals, expected outcomes, maturity state, and repository evidence across quotations, supplier approval, pricing review, project registration, applications, cases, ATM replenishment, and dynamic forms.
+
+**Current execution order:** quotations and pricing review first; supplier approval as the governed-agent reference case; then unify project, application, and case flows around a shared workflow artifact; treat ATM replenishment as a specialized operational-risk scenario.
+
 ### AI Opportunity Radar — Issue 55
 
 - [Issue 55 — RAG, Always-On Memory, and the SKY365 Knowledge Engine](ai-opportunity-radar/issues/55/index.html) — working HTML review covering all newsletter topics, the RAG pipeline, continuous memory, five visual models, the seven-phase execution roadmap, decisions, and repository-derived Concept Graph gate.
