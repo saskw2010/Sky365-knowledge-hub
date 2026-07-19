@@ -28,6 +28,12 @@
 - [Sky365 Knowledge Master Mind Map](documents/00-vision/SKY365-KNOWLEDGE-MASTER-MIND-MAP.md)
 - [Project Portfolio and Investment Mind Map](documents/00-vision/SKY365-PROJECT-PORTFOLIO-AND-INVESTMENT-MIND-MAP.md)
 
+## SKY365 Product Architecture
+
+- [BP-PLATFORM-001 — Meta-Driven Dual Modular Monolith](documents/07-blueprints/BP-PLATFORM-001-sky365-meta-driven-dual-modular-monolith.md)
+- [ADR-PLATFORM-001 — Radzen Default and Syncfusion Calendar V1](documents/09-decisions/ADR-PLATFORM-001-radzen-default-syncfusion-calendar-v1.md)
+- [Architecture Decisions — Visual Index](documents/09-decisions/index.html)
+
 ## Knowledge Adaptation Architecture
 
 - [BP-AI-006 — Knowledge Adaptation Architecture](documents/07-blueprints/BP-AI-006-knowledge-adaptation-architecture.md)
