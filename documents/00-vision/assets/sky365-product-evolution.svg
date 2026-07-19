@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Sky365 Product Evolution</title>
+  <desc id="desc">Timeline from Sky365 Core to Enterprise to AI to Skyverse.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#06101d"/><stop offset="1" stop-color="#102848"/></linearGradient>
+    <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#19d9ff"/><stop offset="1" stop-color="#4776ff"/></linearGradient>
+    <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#38e7d2"/><stop offset="1" stop-color="#3086d8"/></linearGradient>
+    <linearGradient id="g3" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#5d8cff"/><stop offset="1" stop-color="#a97cff"/></linearGradient>
+    <linearGradient id="g4" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#6d5cff"/><stop offset="1" stop-color="#d95cff"/></linearGradient>
+    <filter id="shadow"><feDropShadow dx="0" dy="12" stdDeviation="18" flood-color="#000" flood-opacity=".35"/></filter>
+    <style>
+      .title{font:800 56px Inter,Segoe UI,Arial,sans-serif;fill:#fff}.sub{font:400 22px Inter,Segoe UI,Arial,sans-serif;fill:#9bb4cc}.kicker{font:700 15px Inter,Segoe UI,Arial,sans-serif;letter-spacing:2px;fill:#8ddcff}.name{font:800 30px Inter,Segoe UI,Arial,sans-serif;fill:#fff}.edition{font:700 15px Inter,Segoe UI,Arial,sans-serif;letter-spacing:1.5px;fill:#b9cae0}.tag{font:700 18px Inter,Segoe UI,Arial,sans-serif;fill:#dff8ff}.body{font:400 16px Inter,Segoe UI,Arial,sans-serif;fill:#9fb3c8}.small{font:600 14px Inter,Segoe UI,Arial,sans-serif;fill:#d7e7f5}.arrow{fill:none;stroke:#5d8cff;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}.line{stroke:#264a70;stroke-width:2}.pill{fill:#0d2138;stroke:#315a7e;stroke-width:1.5}
+    </style>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <circle cx="1410" cy="110" r="280" fill="#6d5cff" opacity=".08"/>
+  <circle cx="140" cy="760" r="260" fill="#18d9ff" opacity=".07"/>
+  <text x="90" y="105" class="kicker">SKY365 KNOWLEDGE HUB · FINAL PRODUCT STRUCTURE</text>
+  <text x="90" y="175" class="title">Sky365 Product Evolution</text>
+  <text x="90" y="218" class="sub">Four editions. One clear progression from operations to an agentic metadata-driven platform.</text>
+
+  <line x1="190" y1="405" x2="1410" y2="405" class="line"/>
+
+  <g filter="url(#shadow)">
+    <rect x="70" y="300" rx="28" ry="28" width="330" height="390" fill="#0a1a2b" stroke="#249fff" stroke-width="2"/>
+    <circle cx="235" cy="300" r="54" fill="url(#g1)"/>
+    <text x="235" y="310" text-anchor="middle" class="name" font-size="26">01</text>
+    <text x="105" y="390" class="edition">EDITION 1</text>
+    <text x="105" y="438" class="name">Sky365 Core</text>
+    <text x="105" y="475" class="tag">Modular Monolith ERP</text>
+    <text x="105" y="520" class="body"><tspan x="105" dy="0">Unified business operations,</tspan><tspan x="105" dy="26">workflows and data in one platform.</tspan></text>
+    <rect x="105" y="595" rx="17" width="260" height="60" class="pill"/>
+    <text x="235" y="621" text-anchor="middle" class="small"><tspan x="235">Finance · Sales · Purchasing</tspan><tspan x="235" dy="22">Inventory · HR · CRM</tspan></text>
+  </g>
+
+  <path d="M410 405 H480 M462 387 L480 405 L462 423" class="arrow"/>
+
+  <g filter="url(#shadow)">
+    <rect x="490" y="300" rx="28" ry="28" width="330" height="390" fill="#0a1a2b" stroke="#38e7d2" stroke-width="2"/>
+    <circle cx="655" cy="300" r="54" fill="url(#g2)"/>
+    <text x="655" y="310" text-anchor="middle" class="name" font-size="26">02</text>
+    <text x="525" y="390" class="edition">EDITION 2</text>
+    <text x="525" y="438" class="name">Sky365 Enterprise</text>
+    <text x="525" y="475" class="tag">Scale, Governance &amp; Integration</text>
+    <text x="525" y="520" class="body"><tspan x="525">Extend Core for enterprise-scale</tspan><tspan x="525" dy="26">operations, control and compliance.</tspan></text>
+    <rect x="525" y="595" rx="17" width="260" height="60" class="pill"/>
+    <text x="655" y="621" text-anchor="middle" class="small"><tspan x="655">Governance · Permissions</tspan><tspan x="655" dy="22">Multi-Entity · Integrations</tspan></text>
+  </g>
+
+  <path d="M830 405 H900 M882 387 L900 405 L882 423" class="arrow"/>
+
+  <g filter="url(#shadow)">
+    <rect x="910" y="300" rx="28" ry="28" width="280" height="390" fill="#0a1a2b" stroke="#7d73ff" stroke-width="2"/>
+    <circle cx="1050" cy="300" r="54" fill="url(#g3)"/>
+    <text x="1050" y="310" text-anchor="middle" class="name" font-size="26">03</text>
+    <text x="945" y="390" class="edition">EDITION 3</text>
+    <text x="945" y="438" class="name">Sky365 AI</text>
+    <text x="945" y="475" class="tag">Intelligence &amp; Automation</text>
+    <text x="945" y="520" class="body"><tspan x="945">Copilots, knowledge, analytics,</tspan><tspan x="945" dy="26">recommendations and automation.</tspan></text>
+    <rect x="945" y="595" rx="17" width="210" height="60" class="pill"/>
+    <text x="1050" y="621" text-anchor="middle" class="small"><tspan x="1050">Copilots · RAG · Analytics</tspan><tspan x="1050" dy="22">Knowledge · Automation</tspan></text>
+  </g>
+
+  <path d="M1200 405 H1260 M1242 387 L1260 405 L1242 423" class="arrow"/>
+
+  <g filter="url(#shadow)">
+    <rect x="1270" y="300" rx="28" ry="28" width="270" height="390" fill="#0a1a2b" stroke="#b163ff" stroke-width="2"/>
+    <circle cx="1405" cy="300" r="54" fill="url(#g4)"/>
+    <text x="1405" y="310" text-anchor="middle" class="name" font-size="26">04</text>
+    <text x="1305" y="390" class="edition">EDITION 4</text>
+    <text x="1305" y="438" class="name">Skyverse</text>
+    <text x="1305" y="475" class="tag">Metadata-Driven Agentic Platform</text>
+    <text x="1305" y="520" class="body"><tspan x="1305">Apps, agents and workflows</tspan><tspan x="1305" dy="26">composed from shared metadata.</tspan></text>
+    <rect x="1305" y="595" rx="17" width="200" height="60" class="pill"/>
+    <text x="1405" y="621" text-anchor="middle" class="small"><tspan x="1405">Metadata · Agents · Skills</tspan><tspan x="1405" dy="22">Tools · Memory · Context</tspan></text>
+  </g>
+
+  <rect x="90" y="755" width="1420" height="88" rx="22" fill="#081726" stroke="#294a67"/>
+  <text x="125" y="795" class="tag">Final decision</text>
+  <text x="125" y="826" class="body">Core → Enterprise → AI → Skyverse. Agentic capabilities live inside Skyverse; no separate fifth edition.</text>
+</svg>
