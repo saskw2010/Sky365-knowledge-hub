@@ -94,6 +94,16 @@ Operating loop:
 
 ## Canonical documents
 
+### SKY365 product architecture and Unified System Calendar
+
+- [BP-PLATFORM-001 — SKY365 Meta-Driven Dual Modular Monolith](documents/07-blueprints/BP-PLATFORM-001-sky365-meta-driven-dual-modular-monolith.md)
+- [ADR-PLATFORM-001 — Radzen by Default; Syncfusion Scheduler for Unified Calendar V1](documents/09-decisions/ADR-PLATFORM-001-radzen-default-syncfusion-calendar-v1.md)
+- [Architecture Decisions — Visual Index](documents/09-decisions/index.html)
+
+**Accepted direction:** SKY365 is a meta-driven enterprise ecosystem built around an Enterprise Modular Monolith and a Commerce Modular Monolith, connected through a governed API and integration fabric. Workflows create durable jobs, workers execute them, meaningful states produce notifications, and the Unified System Calendar provides filtered cross-module projections. Radzen remains the default UI library; licensed Syncfusion Scheduler is the justified exception for Calendar V1.
+
+**Evidence rule:** this is an accepted target architecture, not proof of current implementation. Inspect code, runtime, database, authentication, jobs, workers, workflows, notifications, and integrations before migration.
+
 ### Knowledge adaptation architecture
 
 - [BP-AI-006 — Knowledge Adaptation Architecture](documents/07-blueprints/BP-AI-006-knowledge-adaptation-architecture.md)
