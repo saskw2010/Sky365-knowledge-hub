@@ -12,10 +12,9 @@ Landing page and visual execution guide covering:
 
 Open `index.html` through GitHub Pages for the visual experience.
 
-## Assets
+## Visual format
 
-- `assets/safaa-roadmap-wide.png` — concise 16:9 roadmap.
-- `assets/safaa-execution-guide.png` — detailed execution rationale.
+Both roadmaps are rendered directly as responsive HTML/CSS. This keeps all Arabic text complete, searchable, editable and readable on mobile and wide screens without depending on fixed-size images.
 
 ## Status
 
