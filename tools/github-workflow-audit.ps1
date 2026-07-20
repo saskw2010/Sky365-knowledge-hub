@@ -1,5 +1,6 @@
 param(
     [string]$Owner = "saskw2010",
+    [ValidateRange(1, 100)]
     [int]$RunLimit = 10,
     [string]$OutputPath = "governance/GITHUB-WORKFLOW-AUDIT.md"
 )
@@ -10,28 +11,41 @@ if (-not (Get-Command gh -ErrorAction SilentlyContinue)) {
     throw "GitHub CLI (gh) is required. Install it and run: gh auth login"
 }
 
-$authStatus = gh auth status 2>&1
+& gh auth status *> $null
 if ($LASTEXITCODE -ne 0) {
     throw "GitHub CLI is not authenticated. Run: gh auth login"
 }
 
-$repos = gh repo list $Owner --limit 1000 --json nameWithOwner,isArchived,isFork,visibility,defaultBranchRef | ConvertFrom-Json
+Write-Host "Loading repositories for $Owner ..."
+$reposJson = & gh repo list $Owner --limit 1000 --json nameWithOwner,isArchived,isFork,visibility,defaultBranchRef
+if ($LASTEXITCODE -ne 0 -or [string]::IsNullOrWhiteSpace(($reposJson -join "`n"))) {
+    throw "Unable to list repositories for $Owner. Check gh authentication and repository access."
+}
+
+$repos = (($reposJson -join "`n") | ConvertFrom-Json)
 $rows = New-Object System.Collections.Generic.List[object]
+$repoIndex = 0
 
 foreach ($repo in $repos) {
+    $repoIndex++
     $repoName = $repo.nameWithOwner
+    Write-Progress -Activity "Auditing GitHub workflows" -Status "$repoIndex of $($repos.Count): $repoName" -PercentComplete (($repoIndex / [math]::Max($repos.Count, 1)) * 100)
 
-    $workflowsJson = gh api "repos/$repoName/actions/workflows?per_page=100" 2>$null
-    if ($LASTEXITCODE -ne 0 -or [string]::IsNullOrWhiteSpace($workflowsJson)) {
+    $workflowsOutput = & gh api "repos/$repoName/actions/workflows?per_page=100" 2>$null
+    if ($LASTEXITCODE -ne 0 -or [string]::IsNullOrWhiteSpace(($workflowsOutput -join "`n"))) {
         continue
     }
 
-    $workflows = ($workflowsJson | ConvertFrom-Json).workflows
+    $workflowPayload = (($workflowsOutput -join "`n") | ConvertFrom-Json)
+    $workflows = @($workflowPayload.workflows)
+
     foreach ($workflow in $workflows) {
-        $runsJson = gh api "repos/$repoName/actions/workflows/$($workflow.id)/runs?per_page=$RunLimit" 2>$null
+        $runsOutput = & gh api "repos/$repoName/actions/workflows/$($workflow.id)/runs?per_page=$RunLimit" 2>$null
         $runs = @()
-        if ($LASTEXITCODE -eq 0 -and -not [string]::IsNullOrWhiteSpace($runsJson)) {
-            $runs = ($runsJson | ConvertFrom-Json).workflow_runs
+
+        if ($LASTEXITCODE -eq 0 -and -not [string]::IsNullOrWhiteSpace(($runsOutput -join "`n"))) {
+            $runPayload = (($runsOutput -join "`n") | ConvertFrom-Json)
+            $runs = @($runPayload.workflow_runs)
         }
 
         $completed = @($runs | Where-Object { $_.status -eq "completed" })
@@ -58,66 +72,88 @@ foreach ($repo in $repos) {
             "OTHER"
         }
 
+        $lastRunUrl = ""
+        if ($runs.Count -gt 0) {
+            $lastRunUrl = [string]$runs[0].html_url
+        }
+
         $rows.Add([pscustomobject]@{
-            Repository = $repoName
-            Visibility = $repo.visibility
-            Archived = $repo.isArchived
-            Workflow = $workflow.name
-            Path = $workflow.path
-            State = $workflow.state
-            TotalChecked = $completed.Count
-            Success = $success
-            Failure = $failure
-            Cancelled = $cancelled
+            Repository     = $repoName
+            Visibility     = $repo.visibility
+            Archived       = [bool]$repo.isArchived
+            Fork           = [bool]$repo.isFork
+            Workflow       = $workflow.name
+            Path           = $workflow.path
+            State          = $workflow.state
+            TotalChecked   = $completed.Count
+            Success        = $success
+            Failure        = $failure
+            Cancelled      = $cancelled
             Classification = $classification
-            LastRun = if ($runs.Count -gt 0) { $runs[0].html_url } else { "" }
+            LastRun        = $lastRunUrl
         })
     }
 }
 
-$generated = Get-Date -Format "yyyy-MM-dd HH:mm:ss K"
-$summary = $rows | Group-Object Classification | Sort-Object Name
+Write-Progress -Activity "Auditing GitHub workflows" -Completed
 
+$generated = Get-Date -Format "yyyy-MM-dd HH:mm:ss K"
+$summary = @($rows | Group-Object Classification | Sort-Object Name)
 $md = New-Object System.Collections.Generic.List[string]
-$md.Add("# GitHub Workflow Audit")
-$md.Add("")
-$md.Add("Generated: $generated")
-$md.Add("")
-$md.Add("Owner: `$Owner`")
-$md.Add("")
-$md.Add("## Summary")
-$md.Add("")
-$md.Add("| Classification | Count |")
-$md.Add("|---|---:|")
+
+[void]$md.Add("# GitHub Workflow Audit")
+[void]$md.Add("")
+[void]$md.Add("Generated: $generated")
+[void]$md.Add("")
+[void]$md.Add(('Owner: `{0}`' -f $Owner))
+[void]$md.Add("")
+[void]$md.Add("## Summary")
+[void]$md.Add("")
+[void]$md.Add("| Classification | Count |")
+[void]$md.Add("|---|---:|")
+
 foreach ($group in $summary) {
-    $md.Add("| $($group.Name) | $($group.Count) |")
+    [void]$md.Add(("| {0} | {1} |" -f $group.Name, $group.Count))
 }
-$md.Add("")
-$md.Add("## Detailed Inventory")
-$md.Add("")
-$md.Add("| Repository | Workflow | State | Checked | Success | Failure | Cancelled | Classification | Last Run |")
-$md.Add("|---|---|---|---:|---:|---:|---:|---|---|")
+
+[void]$md.Add("")
+[void]$md.Add("## Detailed Inventory")
+[void]$md.Add("")
+[void]$md.Add("| Repository | Workflow | State | Checked | Success | Failure | Cancelled | Classification | Last Run |")
+[void]$md.Add("|---|---|---|---:|---:|---:|---:|---|---|")
+
 foreach ($row in ($rows | Sort-Object Classification, Repository, Workflow)) {
-    $lastRun = if ($row.LastRun) { "[Open]($($row.LastRun))" } else { "—" }
-    $md.Add("| $($row.Repository) | $($row.Workflow) | $($row.State) | $($row.TotalChecked) | $($row.Success) | $($row.Failure) | $($row.Cancelled) | $($row.Classification) | $lastRun |")
+    $lastRun = "-"
+    if (-not [string]::IsNullOrWhiteSpace($row.LastRun)) {
+        $lastRun = "[Open]($($row.LastRun))"
+    }
+
+    $line = "| {0} | {1} | {2} | {3} | {4} | {5} | {6} | {7} | {8} |" -f `
+        $row.Repository, $row.Workflow, $row.State, $row.TotalChecked, `
+        $row.Success, $row.Failure, $row.Cancelled, $row.Classification, $lastRun
+    [void]$md.Add($line)
 }
-$md.Add("")
-$md.Add("## Decision Rules")
-$md.Add("")
-$md.Add("- `ALWAYS_SUCCESS`: keep enabled.")
-$md.Add("- `FLAKY`: investigate logs; do not disable automatically.")
-$md.Add("- `ALWAYS_FAILING`: inspect the repeated failure reason, then disable or delete only after review.")
-$md.Add("- `NO_HISTORY`: review purpose and triggers before deciding.")
-$md.Add("- Archived repositories should normally have workflows disabled unless intentionally maintained.")
+
+[void]$md.Add("")
+[void]$md.Add("## Decision Rules")
+[void]$md.Add("")
+[void]$md.Add('- `ALWAYS_SUCCESS`: keep enabled.')
+[void]$md.Add('- `FLAKY`: investigate logs; do not disable automatically.')
+[void]$md.Add('- `ALWAYS_FAILING`: inspect the repeated failure reason, then disable or delete only after review.')
+[void]$md.Add('- `NO_HISTORY`: review purpose and triggers before deciding.')
+[void]$md.Add('- Archived repositories should normally have workflows disabled unless intentionally maintained.')
 
 $directory = Split-Path -Parent $OutputPath
 if ($directory -and -not (Test-Path $directory)) {
     New-Item -ItemType Directory -Path $directory -Force | Out-Null
 }
 
-$md -join "`n" | Set-Content -Path $OutputPath -Encoding utf8
-$rows | Export-Csv -Path ([System.IO.Path]::ChangeExtension($OutputPath, ".csv")) -NoTypeInformation -Encoding utf8
+$csvPath = [System.IO.Path]::ChangeExtension($OutputPath, ".csv")
+$utf8NoBom = New-Object System.Text.UTF8Encoding($false)
+[System.IO.File]::WriteAllText((Join-Path (Get-Location) $OutputPath), ($md -join "`r`n"), $utf8NoBom)
+$rows | Export-Csv -Path $csvPath -NoTypeInformation -Encoding UTF8
 
+Write-Host ""
 Write-Host "Audit complete: $($rows.Count) workflows found."
 Write-Host "Markdown: $OutputPath"
-Write-Host "CSV: $([System.IO.Path]::ChangeExtension($OutputPath, '.csv'))"
+Write-Host "CSV: $csvPath"
