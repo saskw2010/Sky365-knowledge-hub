@@ -6,11 +6,12 @@ This file is the top-level navigation map for all Sky365 knowledge. It does not 
 
 ## Governance and rearrangement control
 
-These three documents control the iterative migration and restructuring cycle:
+These documents control the iterative migration, restructuring, and cross-session execution cycle:
 
 - [Sky365 Evolving Mental Map](governance/SKY365-MENTAL-MAP.md) — the current hierarchy from purpose to pillars, capabilities, artifacts, sources, and experiences.
 - [Master Repository Census](governance/MASTER-REPOSITORY-CENSUS.md) — the authoritative repository inventory, roles, source areas, and next discovery actions.
 - [Migration Ledger](governance/MIGRATION-LEDGER.md) — the factual record of what was copied, adapted, redirected, validated, promoted, or remains source-only.
+- [Master Task Ledger](governance/MASTER-TASK-LEDGER.md) — the canonical cross-session register for unfinished tasks, owners, evidence, blockers, and exact next actions.
 
 Operating loop:
 
@@ -159,6 +160,7 @@ Operating loop:
 
 - [SESSION-TEMP — Zvec Local Intelligence Architecture](documents/08-research/zvec-ecosystem/sessions/2026-07-18-session-close.md) — full session identity, executive summary, ADRs, knowledge extraction, concept graph, project status, backlog, TODOs, repository changes, commit message, and publish checklist.
 - [SESSION-TEMP — Developer Productivity Habits and Kimi K3 Deployment Reality](documents/archive/sessions/2026/07/SESSION-TEMP-developer-productivity-kimi-k3-analysis.md) — evidence-limited article review, developer delivery workflow, Kimi K3 deployment analysis, provider-routing ADRs, concept graph, and project backlog.
+- [2026-07-20 — GitHub Workflow Governance and Persistent Task Tracking](documents/archive/sessions/2026/07/2026-07-20-github-workflow-governance-session.md) — verified CodeQL shutdown, workflow-governance decisions, unfinished work audit, and cross-session carry-over tasks.
 
 ## Source indexes — preserved
 
