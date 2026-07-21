@@ -138,62 +138,12 @@ Operating loop:
 
 **Current sequence:** Tiny LLM learning and Zvec Core inspection first; native .NET integration, Knowledge Engine, Dynamic Business Semantic Layer, and Memory next; MCP tools and Agent Skills later after the foundation is evaluated.
 
-### Unified Daily Sector Intelligence
+### SKY365 Unified Daily Sector Intelligence
 
-- [SKY365 Unified Daily Sector Intelligence System](documents/08-research/daily-intelligence/DAILY-SECTOR-INTELLIGENCE-SYSTEM.md) — canonical specification for the single 08:00 daily intelligence task, including seven sectors, item lists, evidence hierarchy, persistent ledgers, decision matrix, individual/business/planning impact, repository governance, funding review, and consolidated email/report behavior.
+- [Daily Intelligence — Current Operating Status (2026-07-21)](documents/08-research/daily-intelligence/CURRENT-OPERATING-STATUS-2026-07-21.md)
+- [Unified Daily Sector Intelligence System](documents/08-research/daily-intelligence/DAILY-SECTOR-INTELLIGENCE-SYSTEM.md)
+- [Sector A — Canada Immigration and PR](documents/08-research/daily-intelligence/sectors/SECTOR-A-CANADA-IMMIGRATION-PR.md)
+- [Sector D — B2B Sales and Growth](documents/08-research/daily-intelligence/sectors/SECTOR-D-B2B-SALES-GROWTH.md)
+- [Sector E — Fundraising and Capital](documents/08-research/daily-intelligence/sectors/SECTOR-E-FUNDRAISING-CAPITAL.md)
 
-**Accepted direction:** replace overlapping AI, immigration, BC PNP, funding, and repository-review automations with one governed daily orchestration. Preserve sector-specific checks internally, report every confirmed Canadian immigration draw, deduplicate cross-sector evidence, and convert findings into decisions and actions rather than a general news digest.
-
-### Sky365Offers scenario catalog
-
-- [Sky365Offers — Scenario Catalog v1](documents/06-domain-platforms/sky365offers-scenario-catalog.html) — evidence-backed HTML catalog connecting business events, data, decisions, actions, human approvals, expected outcomes, maturity state, and repository evidence across quotations, supplier approval, pricing review, project registration, applications, cases, ATM replenishment, and dynamic forms.
-
-**Current execution order:** quotations and pricing review first; supplier approval as the governed-agent reference case; then unify project, application, and case flows around a shared workflow artifact; treat ATM replenishment as a specialized operational-risk scenario.
-
-### AI Opportunity Radar — Issue 55
-
-- [Issue 55 — RAG, Always-On Memory, and the SKY365 Knowledge Engine](ai-opportunity-radar/issues/55/index.html) — working HTML review covering all newsletter topics, the RAG pipeline, continuous memory, five visual models, the seven-phase execution roadmap, decisions, and repository-derived Concept Graph gate.
-
-**Accepted direction:** use HTML as the primary human review experience, Zvec as the local retrieval pilot, and generate the final Concept Graph from governed repository evidence after completing the seven phases.
-
-### Session knowledge extracts
-
-- [SESSION-TEMP — Zvec Local Intelligence Architecture](documents/08-research/zvec-ecosystem/sessions/2026-07-18-session-close.md) — full session identity, executive summary, ADRs, knowledge extraction, concept graph, project status, backlog, TODOs, repository changes, commit message, and publish checklist.
-- [SESSION-TEMP — Developer Productivity Habits and Kimi K3 Deployment Reality](documents/archive/sessions/2026/07/SESSION-TEMP-developer-productivity-kimi-k3-analysis.md) — evidence-limited article review, developer delivery workflow, Kimi K3 deployment analysis, provider-routing ADRs, concept graph, and project backlog.
-- [2026-07-20 — GitHub Workflow Governance and Persistent Task Tracking](documents/archive/sessions/2026/07/2026-07-20-github-workflow-governance-session.md) — verified CodeQL shutdown, workflow-governance decisions, unfinished work audit, and cross-session carry-over tasks.
-
-## Source indexes — preserved
-
-The following indexes will be imported without deletion or destructive rewriting:
-
-- `sources/Sky365Offers/`
-- `sources/all-agentic-architectures/`
-- `sources/sky365ERP/`
-- `sources/sky365API/`
-
-Each source folder must contain a source manifest and the original index files when available.
-
-## Canonical promotion rule
-
-A source document becomes canonical only after:
-
-1. Its repository and original path are recorded.
-2. Duplicate versions are compared.
-3. Implementation claims are checked against code or runtime evidence.
-4. Missing sections are merged.
-5. Ownership is established.
-6. Links are validated.
-7. The canonical path is added to this index.
-
-## Immediate migration order
-
-1. Expand the repository census and pin source commits.
-2. Import `Sky365Offers/documents/` unchanged.
-3. Complete exact snapshots of Sky365-owned visual documentation from `all-agentic-architectures` while preserving upstream attribution.
-4. Import documentation indexes from `sky365ERP` and `sky365API`.
-5. Build duplicate, ownership, and implementation-evidence maps.
-6. Rearrange domains and experience routes based on the accumulated census.
-7. Consolidate the master Sky365 Multimodal Agent Platform blueprint.
-8. Consolidate security, voice, video, OCR, prompts, agent runtime, evaluation, and domain-platform documents.
-9. Publish topic pages through the visual portal.
-10. Create separate Arabic and English editions only after the content structure becomes substantially stable.
+**Accepted operating model:** one principal daily automation, fixed sectors, governed item lists, evidence and impact analysis, decisions and actions, one consolidated report, and one email or draft. New requests refine existing sector items rather than creating overlapping principal tasks.
