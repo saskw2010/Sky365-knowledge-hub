@@ -143,7 +143,9 @@ Operating loop:
 - [Daily Intelligence — Current Operating Status (2026-07-21)](documents/08-research/daily-intelligence/CURRENT-OPERATING-STATUS-2026-07-21.md)
 - [Unified Daily Sector Intelligence System](documents/08-research/daily-intelligence/DAILY-SECTOR-INTELLIGENCE-SYSTEM.md)
 - [Sector A — Canada Immigration and PR](documents/08-research/daily-intelligence/sectors/SECTOR-A-CANADA-IMMIGRATION-PR.md)
+- [Sector C — Skyverse Swarm and Connectors](documents/08-research/daily-intelligence/sectors/SECTOR-C-SKYVERSE-SWARM-CONNECTORS.md)
 - [Sector D — B2B Sales and Growth](documents/08-research/daily-intelligence/sectors/SECTOR-D-B2B-SALES-GROWTH.md)
 - [Sector E — Fundraising and Capital](documents/08-research/daily-intelligence/sectors/SECTOR-E-FUNDRAISING-CAPITAL.md)
+- [Session Archive — Daily Intelligence, Concept Graph, Roadmap, B2B, and Skyverse (2026-07-21)](documents/09-decisions/session-records/2026-07-21-daily-intelligence-concept-roadmap-session.md)
 
-**Accepted operating model:** one principal daily automation, fixed sectors, governed item lists, evidence and impact analysis, decisions and actions, one consolidated report, and one email or draft. New requests refine existing sector items rather than creating overlapping principal tasks.
+**Accepted operating model:** one principal daily automation, fixed sectors, governed item lists, evidence and impact analysis, decisions and actions, one consolidated report, and one email or draft. New requests refine existing sector items rather than creating overlapping principal tasks. The Idea Pool preserves general, strategic, and Business Plan Changer ideas outside the current roadmap, while session records preserve exact restart points for unfinished stories.
