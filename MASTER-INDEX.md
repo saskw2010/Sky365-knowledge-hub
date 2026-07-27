@@ -95,6 +95,13 @@ Operating loop:
 
 ## Canonical documents
 
+### Sky365 ERP migration
+
+- [Sky365 ERP Migration Master Plan](architecture/migration/SKY365-ERP-MIGRATION-MASTER-PLAN.md)
+
+**Accepted direction:** migration is split into System Discovery/Migration and Controller Migration/Evolution. Database registries establish canonical hierarchy and placement; Code On Time capabilities require explicit canonical mappings; generated runtime, AI, MCP, OKF, semantic, and vector artifacts remain governed projections. A controller is not marked migrated until parity, tenant isolation, navigation, write behavior, synchronization, provenance, and audit checks pass.
+
+
 ### SKY365 product architecture and Unified System Calendar
 
 - [BP-PLATFORM-001 — SKY365 Meta-Driven Dual Modular Monolith](documents/07-blueprints/BP-PLATFORM-001-sky365-meta-driven-dual-modular-monolith.md)
