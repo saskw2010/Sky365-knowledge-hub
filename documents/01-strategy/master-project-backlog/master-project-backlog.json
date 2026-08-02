@@ -1,12 +1,17 @@
 {
-  "schemaVersion": "1.0",
+  "schemaVersion": "2.0",
   "title": "WytSky / Sky365 Master Project Backlog",
   "createdAt": "2026-08-02",
+  "updatedAt": "2026-08-02",
   "reviewCadence": "MONTHLY",
   "owner": "WytSky Cloud AI Solutions",
+  "hierarchyModel": "DOMAIN > SECTOR > SUBSECTOR > ENTITY > ITEM",
+  "recursive": true,
   "statuses": ["ACTIVE", "NEXT", "WATCH", "PAUSED", "RESEARCH", "MERGE", "DROP_CANDIDATE"],
-  "itemTypes": ["PRODUCT", "PLATFORM_CAPABILITY", "COMPONENT", "EXPERIMENT", "REFERENCE_PROJECT", "MARKET_INITIATIVE", "VERTICAL", "RESEARCH_THREAD"],
+  "entityTypes": ["DOMAIN", "SECTOR", "SUBSECTOR", "PRODUCT", "PLATFORM_CAPABILITY", "COMPONENT", "EXPERIMENT", "REFERENCE_PROJECT", "MARKET_INITIATIVE", "VERTICAL", "RESEARCH_THREAD", "MODEL", "INTEGRATION"],
   "reviewPolicy": {
+    "singleCanonicalParent": true,
+    "crossSectorLinksAsRelationships": true,
     "keepActiveItems": true,
     "maxExecutiveDecisionsPerReview": 3,
     "detectDuplicates": true,
@@ -14,94 +19,105 @@
     "detectDistractionRisk": true,
     "requireExplicitDeletionDecision": true
   },
-  "categories": [
+  "domains": [
     {
-      "id": "CORE_PLATFORM",
-      "name": "Core platform and products",
-      "items": ["Sky365 ERP", "Sky365 SaaS", "Sky365 AI", "Sky365 Agentic", "Sky365 Agentic Enterprise Platform", "Skyverse", "Sky365 Engine AI", "SkyCodeGenerator", "Dynamic ERP Builder", "Dynamic Engine Runtime", "Dynamic Engine Builder", "Dynamic Engine Visualizer", "JSON Dynamic Controller", "MCB Builder", "MCB Server", "Agent Hub", "Integration Gateway", "StudioAI", "Sky365AnythingLLM", "OpenAI-compatible local API", "Anthropic-compatible local API", "Code Time migration", "External Site API V1", "CMS Studio", "Salogi Admin", "Report Designer and Generator", "Embedded Excel", "Translation Engine"]
+      "id": "D01_PLATFORM_ENTERPRISE",
+      "name": "Platform and Enterprise Software",
+      "children": [
+        {"id":"S01_ERP_CORE","name":"ERP Core","children":["Sky365 ERP","Sky365 SaaS","Dynamic ERP Builder","Dynamic Engine Runtime","Dynamic Engine Builder","Dynamic Engine Visualizer","JSON Dynamic Controller","Code Time Migration","Report Designer and Generator","Embedded Excel","Translation Engine","CMS Studio","Salogi Admin"]},
+        {"id":"S02_AGENTIC_PLATFORM","name":"Agentic Enterprise Platform","children":["Sky365 AI","Sky365 Agentic","Sky365 Agentic Enterprise Platform","Skyverse","Sky365 Engine AI","SkyCodeGenerator","MCB Builder","MCB Server","Agent Hub","Integration Gateway","StudioAI","Sky365AnythingLLM","Digital Workforce","Human Approval Gates","Central Approval and Audit Table"]},
+        {"id":"S03_EXPERIENCE_SURFACES","name":"Experience Surfaces","children":["Mascot Agent","AI Front Door","Omni Chat","Omni Tools","Omni Flow","Omni Analytics","Omni Memory","Deterministic Router","Structured Adapter","Permission Policy Audit Trace","LG Voucher Agent"]}
+      ]
     },
     {
-      "id": "AGENTS_EXPERIENCE",
-      "name": "Agents and experience",
-      "items": ["Mascot Agent", "AI Front Door", "Listener-only Meeting Mode", "Podcast Listen-then-Speak Mode", "Transcript and Concept Graph Separation", "High Noter-like Meeting Intelligence", "Omni Chat", "Omni Social", "Omni Tools", "Omni Flow", "Omni Analytics", "Omni Memory", "Digital Workforce", "Human Approval Gates", "Central Approval and Audit Table", "LG Voucher Agent", "Deterministic Router", "Structured Adapter", "Permission Policy Audit Trace"]
+      "id": "D02_AI_RUNTIME",
+      "name": "AI Runtime, Models and Developer Infrastructure",
+      "children": [
+        {"id":"S04_MODEL_GATEWAY","name":"Model Gateway and Routing","children":["OmniRoute","Free Claude Code Proxy","OpenCode","Claude Code Routing","Codex Routing","LiteLLM-style Gateway","Prompt Compression","Provider Failover","Local and Free Model Routing","OpenAI-compatible Local API","Anthropic-compatible Local API","AnythingLLM Anthropic Compatibility"]},
+        {"id":"S05_LOCAL_INFERENCE","name":"Local Inference","children":["Ollama","LM Studio","Vulkan GPU Offload Lab","Multi-GPU Offload","Model Containers"]},
+        {"id":"S06_MODELS_TRAINING","name":"Models and Training","children":["GLM-5.2","Quantized GLM","Compressed GLM","Ternary GLM","Kimi K3 0.18B","Bonsai/Qwen","OLMo Pilot","Gemma 3 27B","DeepSeek V3 Local","Sky365 Tiny Model","Domain-specialized ERP Model","Distillation Curriculum Generation","Hidden-state Persistence","Encrypted Client-side KV Cache"]}
+      ]
     },
     {
-      "id": "GRAPH_MCP_ORCHESTRATION",
-      "name": "Graph, MCP, orchestration, and memory",
-      "items": ["Concept Graph", "Semantic Layer", "Activation Graph", "Context Graph", "Execution Graph", "Staged Multi-Graph", "Dependency-based Parallel Sub-agents", "Graph Engineering", "Loop Engineering", "Harness Engineering", "Governor Engine", "Governor MCP", "Enhancement MCP", "Evidence MCP", "Verification MCP", "Scenario MCP", "Use Case MCP", "ERP Builder MCP", "MCP 2026 Compatibility Lab", "Stateless MCP Migration", "Remote MCP/App Gateway", "Shared Blackboard", "Leader Election", "Debate and Verification", "Recovery", "Human Steering", "OKF", "Zvec Comparison", "Per-user Vector Memory"]
+      "id": "D03_KNOWLEDGE_ORCHESTRATION",
+      "name": "Knowledge, Graphs, Memory and Orchestration",
+      "children": [
+        {"id":"S07_KNOWLEDGE_RUNTIME","name":"Knowledge Runtime","children":["Semantic Layer","Concept Graph","Activation Graph","Context Graph","Execution Graph","Per-user Vector Memory","OKF","Zvec Comparison"]},
+        {"id":"S08_AGENT_ORCHESTRATION","name":"Agent Orchestration","children":["Staged Multi-Graph","Dependency-based Parallel Sub-agents","Graph Engineering","Loop Engineering","Harness Engineering","Shared Blackboard","Leader Election","Debate and Verification","Recovery","Human Steering"]},
+        {"id":"S09_MCP_GOVERNANCE","name":"MCP and Governance","children":["MCP 2026 Compatibility Lab","Stateless MCP Migration","Remote MCP/App Gateway","Governor Engine","Governor MCP","Enhancement MCP","Evidence MCP","Verification MCP","Scenario MCP","Use Case MCP","ERP Builder MCP"]}
+      ]
     },
     {
-      "id": "AI_GATEWAYS_CODING",
-      "name": "AI gateways and coding tools",
-      "items": ["OmniRoute", "Free Claude Code Proxy", "OpenCode", "Claude Code Routing", "Codex Routing", "LiteLLM-style Gateway", "Prompt Compression", "Provider Failover", "Local and Free Model Routing", "AnythingLLM Anthropic Compatibility", "career-ops", "all-agentic-architectures Repository Intelligence", "Repository Audit", "Repository Dashboard", "Repository Consolidation"]
+      "id": "D04_COMMUNICATIONS_MEDIA",
+      "name": "Communications, Media and Content",
+      "children": [
+        {"id":"S10_OMNI_MESSAGING","name":"Omni Messaging","children":["WhatsApp Email SMS Unified Service","Neonize","whatsmeow","Multi-tenant Messaging API Facade","Messaging Administration Screens","Sender Screens","Messaging Reports","Social Inbox","Sender Identity and Governance"]},
+        {"id":"S11_MEETING_PODCAST","name":"Meeting and Podcast Intelligence","children":["Listener-only Meeting Mode","Podcast Listen-then-Speak Mode","Transcript and Concept Graph Separation","High Noter-like Meeting Intelligence","Whisper","TTS Listener and Speaker Modes","Podcast Platform"]},
+        {"id":"S12_MEDIA_AGENT_STUDIO","name":"Media Agent Studio","children":["VideoAgent","HyperFrames","LongCat-Video","Image-to-Talking-Video","WAN Video","Avatar and Virtual Character Generation","Voice-over Pipeline","Automated Social Content","24-hour Build-in-Public Live Stream","Mobile and Laptop Live Workflow"]}
+      ]
     },
     {
-      "id": "LOCAL_MODELS",
-      "name": "Local models, inference, and training",
-      "items": ["GLM-5.2", "Quantized GLM", "Compressed GLM", "Ternary GLM", "Kimi K3 0.18B", "Bonsai/Qwen", "OLMo Pilot", "Gemma 3 27B", "DeepSeek V3 Local", "Distillation Curriculum Generation", "Hidden-state Persistence", "Encrypted Client-side KV Cache", "Ollama", "LM Studio", "Vulkan GPU Offload Lab", "Multi-GPU Offload", "Model Containers", "Sky365 Tiny Model", "Domain-specialized ERP Model"]
+      "id": "D05_COMMERCE_WEB",
+      "name": "Commerce, Web and Federation",
+      "children": [
+        {"id":"S13_COMMERCE_NETWORK","name":"Commerce Network","children":["Commerce Data Network","Distributed Commerce Network Platform","Commerce Federation Platform","GlobalProductDB","TenantProductDB","Product Sharing Network","Network Broadcast Engine"]},
+        {"id":"S14_WEB_PLATFORM","name":"Web Platform","children":["External Site API V1","External Customer Websites via Sky365 API","Website Page Version Service","Tenant Subdomains","CMS-as-a-Service"]}
+      ]
     },
     {
-      "id": "MEDIA_AI",
-      "name": "Video, voice, and content",
-      "items": ["VideoAgent", "HyperFrames", "LongCat-Video", "Image-to-Talking-Video", "WAN Video", "Avatar and Virtual Character Generation", "Voice-over Pipeline", "Whisper", "TTS Listener and Speaker Modes", "Podcast Platform", "Course-from-Voice", "Automated Social Content", "24-hour Build-in-Public Live Stream", "Mobile and Laptop Live Workflow"]
+      "id": "D06_EDUCATION",
+      "name": "Education and Knowledge Products",
+      "children": [
+        {"id":"S15_LEARNING_PLATFORMS","name":"Learning Platforms","children":["WytSchool","WytSchool Brain","Scholza.com","Zaker E-learning","WytSky Academy"]},
+        {"id":"S16_AI_LEARNING_PRODUCTION","name":"AI Learning Production","children":["Every Task Becomes a Lesson","Voice-to-Course","Course-from-Voice","Long YouTube Course Summarizer","Mind Maps Flows and Code Infographics","DeepSeek Design Curriculum","GLM Curriculum","OLMo Learning Pilot"]},
+        {"id":"S17_LANGUAGE_ROBOTICS","name":"Language and Robotics Education","children":["English French Learning System","Robotics and Language Center"]}
+      ]
     },
     {
-      "id": "OMNI_MESSAGING",
-      "name": "Omni Messaging",
-      "items": ["WhatsApp Email SMS Unified Service", "Neonize", "whatsmeow", "Multi-tenant Messaging API Facade", "Messaging Administration Screens", "Sender Screens", "Messaging Reports", "Social Inbox", "Sender Identity and Governance"]
+      "id": "D07_HEALTHCARE",
+      "name": "Healthcare and Medical Technology",
+      "children": [
+        {"id":"S18_CLINICAL_SYSTEMS","name":"Clinical Systems","children":["WytSkyMed","Remote Health Monitoring","HealthyHomeKW","Clinical Workflow Integrations"]},
+        {"id":"S19_RADIOLOGY","name":"Radiology","children":["Structured Radiology Reporting","Radiology Templates and Newsletter","Dr Ahmed Radiology X-Ray Repository"]},
+        {"id":"S20_HEALTHCARE_COMMERCIAL","name":"Healthcare Commercial Use Cases","children":["Healthcare Use Cases","Healthcare Demos","Medical-sector Job Search Scenarios"]}
+      ]
     },
     {
-      "id": "COMMERCE_WEB",
-      "name": "Commerce, websites, and federation",
-      "items": ["Commerce Data Network", "Distributed Commerce Network Platform", "Commerce Federation Platform", "GlobalProductDB", "TenantProductDB", "Product Sharing Network", "Network Broadcast Engine", "External Customer Websites via Sky365 API", "Website Page Version Service", "Tenant Subdomains", "CMS-as-a-Service"]
+      "id": "D08_VERTICALS",
+      "name": "Industry Verticals",
+      "children": [
+        {"id":"S21_LOGISTICS","name":"Logistics, Delivery and Fleet","children":["Salogi","Bitoko","Delivery","Delivery Use Cases","Fleet","Logistics and Warehousing","E-signature Integration","Saudi Transport Authority Trip Integration","Logistics Demos"]},
+        {"id":"S22_AGRICULTURE_DRONES","name":"Agriculture and Drones","children":["WytSky AgroTech","Agriculture","Skydrons","Robotics and Drones"]},
+        {"id":"S23_MIGRATION_MOBILITY","name":"Migration and Mobility","children":["WytSky Migrant Hub","Immigration Intelligence","Canada and BC PNP Planning","Europe Mobility"]},
+        {"id":"S24_PUBLISHING_RESEARCH","name":"Publishing and Research","children":["SkyInk","Books Guides and Booklets","Scientific Research","Da'wa Content"]}
+      ]
     },
     {
-      "id": "EDUCATION",
-      "name": "Education and knowledge products",
-      "items": ["Scholza.com", "Zaker E-learning", "WytSchool", "WytSchool Brain", "WytSky Academy", "Every Task Becomes a Lesson", "Voice-to-Course", "DeepSeek Design Curriculum", "GLM Curriculum", "OLMo Learning Pilot", "Mind Maps Flows and Code Infographics", "Robotics and Language Center", "English French Learning System", "Long YouTube Course Summarizer"]
+      "id": "D09_COMMERCIAL",
+      "name": "Commercial Strategy, Markets and Partnerships",
+      "children": [
+        {"id":"S25_REVENUE_OFFERS","name":"Revenue and Offers","children":["WytSky Cloud AI Solutions","B2B Offers","Enterprise AI Transformation Services","Productized Integration Packages","Fundraising Linked to Paid Pilots"]},
+        {"id":"S26_MARKETS","name":"Markets","children":["Kuwait Market Development","Saudi Arabia Market Entry","Qatar Market Entry","Abu Dhabi UAE Market Entry","Europe Market Development","Canada Market Development"]},
+        {"id":"S27_PARTNERSHIPS_CAPITAL","name":"Partnerships and Capital","children":["Partner and Channel Model","Lindo.ai Partnership","StartupGPT and Incubators"]},
+        {"id":"S28_BRAND_DOMAINS","name":"Brand and Domains","children":["wytsky.com","wytskyai365.com"]}
+      ]
     },
     {
-      "id": "HEALTHCARE",
-      "name": "Healthcare and radiology",
-      "items": ["WytSkyMed", "Remote Health Monitoring", "HealthyHomeKW", "Structured Radiology Reporting", "Radiology Templates and Newsletter", "Dr Ahmed Radiology X-Ray Repository", "Healthcare Use Cases", "Delivery Use Cases", "Medical-sector Job Search Scenarios", "Clinical Workflow Integrations"]
-    },
-    {
-      "id": "VERTICALS_INITIATIVES",
-      "name": "Verticals and strategic initiatives",
-      "items": ["WytSky Migrant Hub", "Immigration Intelligence", "Canada and BC PNP Planning", "Europe Mobility", "WytSky AgroTech", "Agriculture", "Skydrons", "Robotics and Drones", "SkyInk", "Books Guides and Booklets", "Scientific Research", "Da'wa Content", "Salogi", "Bitoko", "Delivery", "Fleet", "Logistics and Warehousing", "E-signature Integration", "Saudi Transport Authority Trip Integration"]
-    },
-    {
-      "id": "COMMERCIAL_GROWTH",
-      "name": "Commercial growth and markets",
-      "items": ["WytSky Cloud AI Solutions", "wytsky.com", "wytskyai365.com", "B2B Offers", "Enterprise AI Transformation Services", "Partner and Channel Model", "Qatar Market Entry", "Abu Dhabi UAE Market Entry", "Saudi Arabia Market Entry", "Kuwait Market Development", "Fundraising Linked to Paid Pilots", "Lindo.ai Partnership", "StartupGPT and Incubators", "Healthcare Demos", "Logistics Demos", "Productized Integration Packages"]
-    },
-    {
-      "id": "REFERENCE_ARCHITECTURE",
-      "name": "Reference architecture",
-      "items": ["Core Foundation", "Integration and Orchestration", "Knowledge and Context", "Execution and Tools", "AI Agents Runtime", "Experience and Interaction", "Marketplace", "Vertical Systems", "MCP Layer", "Integrations Layer", "Knowledge Gateway", "Intent and Dynamic Execution Planner", "Knowledge Blackboard", "Human Review", "Memory Layer", "Observability", "Audit Intelligence", "Evidence and Verification Engines"]
+      "id": "D10_ARCHITECTURE_GOVERNANCE",
+      "name": "Architecture, Governance and Repository Intelligence",
+      "children": [
+        {"id":"S29_REFERENCE_ARCHITECTURE","name":"Reference Architecture","children":["Core Foundation","Integration and Orchestration","Knowledge and Context","Execution and Tools","AI Agents Runtime","Experience and Interaction","Marketplace","Vertical Systems","MCP Layer","Integrations Layer","Knowledge Gateway","Intent and Dynamic Execution Planner","Knowledge Blackboard","Memory Layer"]},
+        {"id":"S30_GOVERNANCE_OBSERVABILITY","name":"Governance and Observability","children":["Human Review","Observability","Audit Intelligence","Evidence and Verification Engines"]},
+        {"id":"S31_REPOSITORY_INTELLIGENCE","name":"Repository Intelligence","children":["career-ops","all-agentic-architectures Repository Intelligence","Repository Audit","Repository Dashboard","Repository Consolidation","Archive Review"]}
+      ]
     }
   ],
-  "consolidationHypotheses": [
-    {
-      "target": "Model Gateway and Developer Runtime",
-      "candidates": ["OmniRoute", "Free Claude Code Proxy", "Claude Code Routing", "Codex Routing", "Provider Failover", "Local and Free Model Routing"]
-    },
-    {
-      "target": "Meeting and Media Intelligence",
-      "candidates": ["Listener-only Meeting Mode", "Podcast Listen-then-Speak Mode", "High Noter-like Meeting Intelligence", "Transcript and Concept Graph Separation"]
-    },
-    {
-      "target": "Knowledge and Context Runtime",
-      "candidates": ["Concept Graph", "Semantic Layer", "Activation Graph", "Context Graph", "Execution Graph", "Per-user Vector Memory", "OKF"]
-    },
-    {
-      "target": "Media Agent Studio",
-      "candidates": ["VideoAgent", "HyperFrames", "LongCat-Video", "Avatar and Virtual Character Generation", "Voice-over Pipeline", "Automated Social Content"]
-    },
-    {
-      "target": "Unified Education Product Thesis",
-      "candidates": ["WytSchool", "Scholza.com", "Zaker E-learning", "Voice-to-Course", "Long YouTube Course Summarizer"]
-    }
+  "relationships": [
+    {"type":"CONSOLIDATE_INTO","target":"Model Gateway and Developer Runtime","sources":["OmniRoute","Free Claude Code Proxy","Claude Code Routing","Codex Routing","Provider Failover","Local and Free Model Routing"]},
+    {"type":"CONSOLIDATE_INTO","target":"Meeting and Podcast Intelligence","sources":["Listener-only Meeting Mode","Podcast Listen-then-Speak Mode","High Noter-like Meeting Intelligence","Transcript and Concept Graph Separation"]},
+    {"type":"CONSOLIDATE_INTO","target":"Knowledge Runtime","sources":["Concept Graph","Semantic Layer","Activation Graph","Context Graph","Execution Graph","Per-user Vector Memory","OKF"]},
+    {"type":"CONSOLIDATE_INTO","target":"Media Agent Studio","sources":["VideoAgent","HyperFrames","LongCat-Video","Avatar and Virtual Character Generation","Voice-over Pipeline","Automated Social Content"]},
+    {"type":"CONSOLIDATE_INTO","target":"Unified Education Portfolio","sources":["WytSchool","Scholza.com","Zaker E-learning","Voice-to-Course","Long YouTube Course Summarizer"]}
   ],
   "reviewHistory": []
 }
