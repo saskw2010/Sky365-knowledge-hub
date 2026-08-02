@@ -1,0 +1,107 @@
+{
+  "schemaVersion": "1.0",
+  "title": "WytSky / Sky365 Master Project Backlog",
+  "createdAt": "2026-08-02",
+  "reviewCadence": "MONTHLY",
+  "owner": "WytSky Cloud AI Solutions",
+  "statuses": ["ACTIVE", "NEXT", "WATCH", "PAUSED", "RESEARCH", "MERGE", "DROP_CANDIDATE"],
+  "itemTypes": ["PRODUCT", "PLATFORM_CAPABILITY", "COMPONENT", "EXPERIMENT", "REFERENCE_PROJECT", "MARKET_INITIATIVE", "VERTICAL", "RESEARCH_THREAD"],
+  "reviewPolicy": {
+    "keepActiveItems": true,
+    "maxExecutiveDecisionsPerReview": 3,
+    "detectDuplicates": true,
+    "detectMergeCandidates": true,
+    "detectDistractionRisk": true,
+    "requireExplicitDeletionDecision": true
+  },
+  "categories": [
+    {
+      "id": "CORE_PLATFORM",
+      "name": "Core platform and products",
+      "items": ["Sky365 ERP", "Sky365 SaaS", "Sky365 AI", "Sky365 Agentic", "Sky365 Agentic Enterprise Platform", "Skyverse", "Sky365 Engine AI", "SkyCodeGenerator", "Dynamic ERP Builder", "Dynamic Engine Runtime", "Dynamic Engine Builder", "Dynamic Engine Visualizer", "JSON Dynamic Controller", "MCB Builder", "MCB Server", "Agent Hub", "Integration Gateway", "StudioAI", "Sky365AnythingLLM", "OpenAI-compatible local API", "Anthropic-compatible local API", "Code Time migration", "External Site API V1", "CMS Studio", "Salogi Admin", "Report Designer and Generator", "Embedded Excel", "Translation Engine"]
+    },
+    {
+      "id": "AGENTS_EXPERIENCE",
+      "name": "Agents and experience",
+      "items": ["Mascot Agent", "AI Front Door", "Listener-only Meeting Mode", "Podcast Listen-then-Speak Mode", "Transcript and Concept Graph Separation", "High Noter-like Meeting Intelligence", "Omni Chat", "Omni Social", "Omni Tools", "Omni Flow", "Omni Analytics", "Omni Memory", "Digital Workforce", "Human Approval Gates", "Central Approval and Audit Table", "LG Voucher Agent", "Deterministic Router", "Structured Adapter", "Permission Policy Audit Trace"]
+    },
+    {
+      "id": "GRAPH_MCP_ORCHESTRATION",
+      "name": "Graph, MCP, orchestration, and memory",
+      "items": ["Concept Graph", "Semantic Layer", "Activation Graph", "Context Graph", "Execution Graph", "Staged Multi-Graph", "Dependency-based Parallel Sub-agents", "Graph Engineering", "Loop Engineering", "Harness Engineering", "Governor Engine", "Governor MCP", "Enhancement MCP", "Evidence MCP", "Verification MCP", "Scenario MCP", "Use Case MCP", "ERP Builder MCP", "MCP 2026 Compatibility Lab", "Stateless MCP Migration", "Remote MCP/App Gateway", "Shared Blackboard", "Leader Election", "Debate and Verification", "Recovery", "Human Steering", "OKF", "Zvec Comparison", "Per-user Vector Memory"]
+    },
+    {
+      "id": "AI_GATEWAYS_CODING",
+      "name": "AI gateways and coding tools",
+      "items": ["OmniRoute", "Free Claude Code Proxy", "OpenCode", "Claude Code Routing", "Codex Routing", "LiteLLM-style Gateway", "Prompt Compression", "Provider Failover", "Local and Free Model Routing", "AnythingLLM Anthropic Compatibility", "career-ops", "all-agentic-architectures Repository Intelligence", "Repository Audit", "Repository Dashboard", "Repository Consolidation"]
+    },
+    {
+      "id": "LOCAL_MODELS",
+      "name": "Local models, inference, and training",
+      "items": ["GLM-5.2", "Quantized GLM", "Compressed GLM", "Ternary GLM", "Kimi K3 0.18B", "Bonsai/Qwen", "OLMo Pilot", "Gemma 3 27B", "DeepSeek V3 Local", "Distillation Curriculum Generation", "Hidden-state Persistence", "Encrypted Client-side KV Cache", "Ollama", "LM Studio", "Vulkan GPU Offload Lab", "Multi-GPU Offload", "Model Containers", "Sky365 Tiny Model", "Domain-specialized ERP Model"]
+    },
+    {
+      "id": "MEDIA_AI",
+      "name": "Video, voice, and content",
+      "items": ["VideoAgent", "HyperFrames", "LongCat-Video", "Image-to-Talking-Video", "WAN Video", "Avatar and Virtual Character Generation", "Voice-over Pipeline", "Whisper", "TTS Listener and Speaker Modes", "Podcast Platform", "Course-from-Voice", "Automated Social Content", "24-hour Build-in-Public Live Stream", "Mobile and Laptop Live Workflow"]
+    },
+    {
+      "id": "OMNI_MESSAGING",
+      "name": "Omni Messaging",
+      "items": ["WhatsApp Email SMS Unified Service", "Neonize", "whatsmeow", "Multi-tenant Messaging API Facade", "Messaging Administration Screens", "Sender Screens", "Messaging Reports", "Social Inbox", "Sender Identity and Governance"]
+    },
+    {
+      "id": "COMMERCE_WEB",
+      "name": "Commerce, websites, and federation",
+      "items": ["Commerce Data Network", "Distributed Commerce Network Platform", "Commerce Federation Platform", "GlobalProductDB", "TenantProductDB", "Product Sharing Network", "Network Broadcast Engine", "External Customer Websites via Sky365 API", "Website Page Version Service", "Tenant Subdomains", "CMS-as-a-Service"]
+    },
+    {
+      "id": "EDUCATION",
+      "name": "Education and knowledge products",
+      "items": ["Scholza.com", "Zaker E-learning", "WytSchool", "WytSchool Brain", "WytSky Academy", "Every Task Becomes a Lesson", "Voice-to-Course", "DeepSeek Design Curriculum", "GLM Curriculum", "OLMo Learning Pilot", "Mind Maps Flows and Code Infographics", "Robotics and Language Center", "English French Learning System", "Long YouTube Course Summarizer"]
+    },
+    {
+      "id": "HEALTHCARE",
+      "name": "Healthcare and radiology",
+      "items": ["WytSkyMed", "Remote Health Monitoring", "HealthyHomeKW", "Structured Radiology Reporting", "Radiology Templates and Newsletter", "Dr Ahmed Radiology X-Ray Repository", "Healthcare Use Cases", "Delivery Use Cases", "Medical-sector Job Search Scenarios", "Clinical Workflow Integrations"]
+    },
+    {
+      "id": "VERTICALS_INITIATIVES",
+      "name": "Verticals and strategic initiatives",
+      "items": ["WytSky Migrant Hub", "Immigration Intelligence", "Canada and BC PNP Planning", "Europe Mobility", "WytSky AgroTech", "Agriculture", "Skydrons", "Robotics and Drones", "SkyInk", "Books Guides and Booklets", "Scientific Research", "Da'wa Content", "Salogi", "Bitoko", "Delivery", "Fleet", "Logistics and Warehousing", "E-signature Integration", "Saudi Transport Authority Trip Integration"]
+    },
+    {
+      "id": "COMMERCIAL_GROWTH",
+      "name": "Commercial growth and markets",
+      "items": ["WytSky Cloud AI Solutions", "wytsky.com", "wytskyai365.com", "B2B Offers", "Enterprise AI Transformation Services", "Partner and Channel Model", "Qatar Market Entry", "Abu Dhabi UAE Market Entry", "Saudi Arabia Market Entry", "Kuwait Market Development", "Fundraising Linked to Paid Pilots", "Lindo.ai Partnership", "StartupGPT and Incubators", "Healthcare Demos", "Logistics Demos", "Productized Integration Packages"]
+    },
+    {
+      "id": "REFERENCE_ARCHITECTURE",
+      "name": "Reference architecture",
+      "items": ["Core Foundation", "Integration and Orchestration", "Knowledge and Context", "Execution and Tools", "AI Agents Runtime", "Experience and Interaction", "Marketplace", "Vertical Systems", "MCP Layer", "Integrations Layer", "Knowledge Gateway", "Intent and Dynamic Execution Planner", "Knowledge Blackboard", "Human Review", "Memory Layer", "Observability", "Audit Intelligence", "Evidence and Verification Engines"]
+    }
+  ],
+  "consolidationHypotheses": [
+    {
+      "target": "Model Gateway and Developer Runtime",
+      "candidates": ["OmniRoute", "Free Claude Code Proxy", "Claude Code Routing", "Codex Routing", "Provider Failover", "Local and Free Model Routing"]
+    },
+    {
+      "target": "Meeting and Media Intelligence",
+      "candidates": ["Listener-only Meeting Mode", "Podcast Listen-then-Speak Mode", "High Noter-like Meeting Intelligence", "Transcript and Concept Graph Separation"]
+    },
+    {
+      "target": "Knowledge and Context Runtime",
+      "candidates": ["Concept Graph", "Semantic Layer", "Activation Graph", "Context Graph", "Execution Graph", "Per-user Vector Memory", "OKF"]
+    },
+    {
+      "target": "Media Agent Studio",
+      "candidates": ["VideoAgent", "HyperFrames", "LongCat-Video", "Avatar and Virtual Character Generation", "Voice-over Pipeline", "Automated Social Content"]
+    },
+    {
+      "target": "Unified Education Product Thesis",
+      "candidates": ["WytSchool", "Scholza.com", "Zaker E-learning", "Voice-to-Course", "Long YouTube Course Summarizer"]
+    }
+  ],
+  "reviewHistory": []
+}
