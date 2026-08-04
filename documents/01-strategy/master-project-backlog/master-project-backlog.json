@@ -1,8 +1,8 @@
 {
-  "schemaVersion": "2.0",
+  "schemaVersion": "2.1",
   "title": "WytSky / Sky365 Master Project Backlog",
   "createdAt": "2026-08-02",
-  "updatedAt": "2026-08-02",
+  "updatedAt": "2026-08-04",
   "reviewCadence": "MONTHLY",
   "owner": "WytSky Cloud AI Solutions",
   "hierarchyModel": "DOMAIN > SECTOR > SUBSECTOR > ENTITY > ITEM",
@@ -108,7 +108,11 @@
       "children": [
         {"id":"S29_REFERENCE_ARCHITECTURE","name":"Reference Architecture","children":["Core Foundation","Integration and Orchestration","Knowledge and Context","Execution and Tools","AI Agents Runtime","Experience and Interaction","Marketplace","Vertical Systems","MCP Layer","Integrations Layer","Knowledge Gateway","Intent and Dynamic Execution Planner","Knowledge Blackboard","Memory Layer"]},
         {"id":"S30_GOVERNANCE_OBSERVABILITY","name":"Governance and Observability","children":["Human Review","Observability","Audit Intelligence","Evidence and Verification Engines"]},
-        {"id":"S31_REPOSITORY_INTELLIGENCE","name":"Repository Intelligence","children":["career-ops","all-agentic-architectures Repository Intelligence","Repository Audit","Repository Dashboard","Repository Consolidation","Archive Review"]}
+        {"id":"S31_REPOSITORY_INTELLIGENCE","name":"Repository Intelligence","children":["career-ops","all-agentic-architectures Repository Intelligence","Repository Audit","Repository Dashboard","Repository Consolidation","Archive Review"]},
+        {"id":"S32_VISUAL_INTELLIGENCE_DIAGRAMS","name":"Visual Intelligence, Diagrams and Living Documentation","children":[
+          {"id":"E32_01","name":"Sky365 Visual Intelligence & Diagram Engine","type":"PLATFORM_CAPABILITY","status":"RESEARCH","canonicalSource":"Structured JSON, workflow definitions, concept graphs, schemas and agent plans","children":["Draw.io MCP Integration","Mermaid Provider","JSON-to-Diagram Conversion","Workflow Visualizer","Concept Graph Visualizer","Architecture Generator","Sequence Diagram Generator","ER Diagram Generator","API Diagram Generator","Agent Execution Visualizer","Meeting-to-Diagram","Living Documentation","Diagram Export to Draw.io SVG PNG PDF","Code-to-Diagram","Diagram-to-Code Research","Reverse-engineering Visualizer"]},
+          {"id":"E32_02","name":"lgazo/drawio-mcp-server","type":"REFERENCE_PROJECT","status":"WATCH","role":"Candidate dependency and proof-of-concept source","repository":"https://github.com/lgazo/drawio-mcp-server"}
+        ]}
       ]
     }
   ],
@@ -117,7 +121,11 @@
     {"type":"CONSOLIDATE_INTO","target":"Meeting and Podcast Intelligence","sources":["Listener-only Meeting Mode","Podcast Listen-then-Speak Mode","High Noter-like Meeting Intelligence","Transcript and Concept Graph Separation"]},
     {"type":"CONSOLIDATE_INTO","target":"Knowledge Runtime","sources":["Concept Graph","Semantic Layer","Activation Graph","Context Graph","Execution Graph","Per-user Vector Memory","OKF"]},
     {"type":"CONSOLIDATE_INTO","target":"Media Agent Studio","sources":["VideoAgent","HyperFrames","LongCat-Video","Avatar and Virtual Character Generation","Voice-over Pipeline","Automated Social Content"]},
-    {"type":"CONSOLIDATE_INTO","target":"Unified Education Portfolio","sources":["WytSchool","Scholza.com","Zaker E-learning","Voice-to-Course","Long YouTube Course Summarizer"]}
+    {"type":"CONSOLIDATE_INTO","target":"Unified Education Portfolio","sources":["WytSchool","Scholza.com","Zaker E-learning","Voice-to-Course","Long YouTube Course Summarizer"]},
+    {"type":"CONSOLIDATE_INTO","target":"Sky365 Visual Intelligence & Diagram Engine","sources":["Draw.io MCP Integration","Mermaid Provider","JSON-to-Diagram Conversion","Workflow Visualizer","Concept Graph Visualizer","Architecture Generator","Sequence Diagram Generator","ER Diagram Generator","API Diagram Generator","Agent Execution Visualizer","Meeting-to-Diagram","Living Documentation","Diagram Export to Draw.io SVG PNG PDF","Code-to-Diagram","Diagram-to-Code Research","Reverse-engineering Visualizer"]},
+    {"type":"REFERENCE_FOR","source":"lgazo/drawio-mcp-server","target":"Sky365 Visual Intelligence & Diagram Engine"}
   ],
-  "reviewHistory": []
+  "reviewHistory": [
+    {"date":"2026-08-04","change":"Added Sky365 Visual Intelligence & Diagram Engine as one reusable platform capability and registered lgazo/drawio-mcp-server as a WATCH reference project rather than a standalone Sky365 product."}
+  ]
 }
