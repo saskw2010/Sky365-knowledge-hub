@@ -86,6 +86,14 @@ WytSky Cloud AI Solutions; wytsky.com; wytskyai365.com; B2B offers; enterprise A
 
 Core Foundation; Integration and Orchestration; Knowledge and Context; Execution and Tools; AI Agents Runtime; Experience and Interaction; Marketplace; Vertical Systems; MCP layer; integrations layer; Knowledge Gateway; Intent and Dynamic Execution Planner; Knowledge Blackboard; Human Review; Memory Layer; Observability; Audit Intelligence; Evidence and Verification engines.
 
+### 14. Diagram, visualization, and living documentation
+
+Sky365 Visual Intelligence & Diagram Engine; Draw.io MCP integration; Mermaid provider; JSON-to-Diagram conversion; Workflow Visualizer; Concept Graph Visualizer; Architecture Generator; Sequence Diagram Generator; ER Diagram Generator; API Diagram Generator; Agent Execution Visualizer; Meeting-to-Diagram; Living Documentation; Diagram Export to Draw.io, SVG, PNG, and PDF; Code-to-Diagram; Diagram-to-Code research; reverse-engineering visualizer.
+
+The canonical source of truth remains structured JSON, workflow definitions, concept graphs, schemas, and agent plans. Draw.io and Mermaid are generated views, not the primary storage format.
+
+**Reference project:** `lgazo/drawio-mcp-server` is tracked as a candidate dependency and proof-of-concept source. It should not become a separate Sky365 product unless benchmark evidence proves strategic value.
+
 ## Current consolidation hypotheses
 
 These are hypotheses for review, not final decisions:
@@ -96,6 +104,7 @@ These are hypotheses for review, not final decisions:
 - VideoAgent, HyperFrames, LongCat-Video, avatar generation, voice-over, and social automation likely belong under one **Media Agent Studio**, unless a standalone buyer case is proven.
 - Commerce federation concepts may be a vertical platform built on Sky365 APIs rather than a separate foundational stack.
 - WytSchool, Scholza, Zaker, voice-to-course, and course summarization require a unified education product thesis to avoid fragmentation.
+- Draw.io MCP, Mermaid, workflow visualization, concept-graph visualization, architecture generation, and living documentation should consolidate under one **Sky365 Visual Intelligence & Diagram Engine** capability rather than separate products.
 
 ## Initial executive warning
 
